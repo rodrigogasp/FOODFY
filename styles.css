@@ -1,6 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: white;
+    max-width: 1400px;
  
 }
 
@@ -9,7 +10,7 @@ div.menu {
     justify-content: left;
     align-items: center;
     justify-items: center;
-    margin-left: 230px;
+    margin-left: 200px;
     margin-top: 37px;
 
 }
@@ -35,16 +36,14 @@ div.menu {
 }
 
 #chef {
-    width: 800px;
+    width: 840px;
     height: 366px;
     padding: 66px 100px 0px 60px;
     background-color: #FBDFDB;
     display: flex;
     border-radius: 30px;
-    margin: 0 0 0 230px;
+    margin: 0 0 0 200px;
     margin-top: 30px;
-   
-    
     
 }
 
@@ -76,3 +75,37 @@ div.menu {
 }
 
 
+div.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: 200px;
+    gap: 0;
+}
+
+div.card img {
+    height: 140px;
+    width: 300px;
+    border-radius: 15px;
+
+}
+
+h2 {
+  margin-left: 200px;  
+}
+
+div.card h4,
+div.card p {
+   
+}
+
+footer {
+    background-color: #EEEEEE;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+footer p {
+    text-align: center;
+    font-size: 14px;
+    color: #999999;
+}
