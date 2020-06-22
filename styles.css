@@ -30,10 +30,6 @@ div.menu {
     
 }
 
-.container {
- 
-    
-}
 
 #chef {
     width: 840px;
@@ -89,23 +85,42 @@ div.card img {
 
 }
 
-h2 {
+.container h2 {
   margin-left: 200px;  
-}
-
-div.card h4,
-div.card p {
-   
 }
 
 footer {
     background-color: #EEEEEE;
     padding-top: 15px;
     padding-bottom: 15px;
+    
 }
 
 footer p {
     text-align: center;
     font-size: 14px;
     color: #999999;
+}
+
+/* SOBRE HTML */
+div.sobreofoodfy {
+    margin-left: 200px;
+}
+
+div.sobreofoodfy h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+div.sobreofoodfy h2 {
+
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+div.sobreofoodfy p {
+    font-size: 18px;
+    line-height: 28px;
+    text-align: justify;
 }
