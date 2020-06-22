@@ -82,6 +82,7 @@ div.card img {
     height: 140px;
     width: 300px;
     border-radius: 15px;
+    cursor: pointer;
 
 }
 
@@ -139,7 +140,14 @@ div.modalOverlay {
     height: 100%;
     position: fixed;
     top:0;
+    opacity: 0;
+    visibility: hidden;
 
+}
+
+.modalOverlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 div.modal {
