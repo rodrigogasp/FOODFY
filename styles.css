@@ -124,3 +124,9 @@ div.sobreofoodfy p {
     line-height: 28px;
     text-align: justify;
 }
+
+/* PAGE RECEITAS */
+
+div.container {
+    margin-top: 50px;
+}
