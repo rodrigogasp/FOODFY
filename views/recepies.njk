@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
-  
+{%extends "layout.njk"%}
+
+    {%block title%}
     <title>Receitas</title>
-</head>
-<body>
+    {%endblock title%}
 
 
-    <div class="menu">
-            
-            <a href="/"><img src="assets/logo.png" alt=""></a>
-            
-            <a href="/sobre">Sobre</a>
-            <a href="">Receitas</a>
-            
-            
-       
-        
-    </div>  
-
+    {%block content%}
     <div class="container">
         
         <div class="cards">
@@ -134,35 +118,11 @@
 
     </div>
 
-    <div class="modalOverlay">
+    {%endblock content%}
 
-        <div class="modal">
-
-            <div class="modal-img">
-
-                
-                <img src="" alt="">
-            </div>
-            <div class="modal-title">
-
-                <h4></h4>
-            </div>
-            <div class="modal-author">
-
-                <p></p>
-            </div>
-            <a class="closemodal">Fechar</a>
-        </div>
-
-    </div>
-
-    <footer>
-
-        <p>Todos direitos reservados, receitas Foodfy.</p>
-
-
-    </footer>
+   
+        
+{%block scripts%}
 <script src="scripts.js"></script>
+{%endblock scripts%}
     
-</body>
-</html>

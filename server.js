@@ -10,7 +10,7 @@ server.listen(3000, function(){
 
 server.use(express.static("public"))
 
-server.set("view engine", "html")
+server.set("view engine", "njk")
 
 server.get("/", function(req, res){
     return res.render("home")
