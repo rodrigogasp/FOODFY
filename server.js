@@ -2,11 +2,12 @@ const express = require("express")
 const nunjucks = require("nunjucks")
 
 const server = express()
+const recipes = require("./data")
 
 server.listen(3000, function(){
     console.log("server is running")
 }) 
-//const courses = require("./data")
+
 
 server.use(express.static("public"))
 
@@ -21,7 +22,21 @@ server.get("/sobre", function(req, res){
 })
 
 server.get("/receitas", function(req, res){
-    return res.render("recepies")
+    return res.render("recipes")
+})
+
+server.get("/receita/:id", function(req, res) {
+    const id = req.params.id
+    const recipe = recipes.find(function(recipe) {
+
+        if (recipe.id == id) {
+            return true
+        }
+    })
+    if (!recipe) {
+        return res.send("Recipe not found!")
+    }
+    return res.render("recipe", { item: recipe });
 })
 
 nunjucks.configure("views", {
