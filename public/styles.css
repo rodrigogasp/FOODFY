@@ -98,11 +98,11 @@ div.card img {
   margin-left: 200px;  
 }
 
-
 footer {
     background-color: #EEEEEE;
     width: 100%;
     margin-top: auto;
+    min-height: 100%;
      
 }
 
@@ -110,7 +110,6 @@ footer p {
     text-align: center;
     font-size: 14px;
     color: #999999;
-    padding: 2%;
     
 }
 

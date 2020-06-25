@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/styles.css">
   
-    {%block title%}}
-    {%endblock title%}
-</head>
-<body>
+        {%block title%}
+        {%endblock title%}
+    </head>
+
+    <body>
 
 
-    <div class="menu">
+        <div class="menu">
             
             <a href="/"><img src="/assets/logo.png" alt=""></a>
             
@@ -21,27 +22,26 @@
             
        
         
-    </div>  
+        </div>  
 
-    {%block content%}
-    {%endblock content%}
-
-    <div class="footer">
+        {%block content%}
+        {%endblock content%}
 
 
 
-    <footer>
 
-        <p>Todos direitos reservados, receitas Foodfy.</p>
+            <footer>
+
+                <p>Todos direitos reservados, receitas Foodfy.</p>
 
 
-    </footer>
+            </footer>
+
+       
+
+        {%block scripts%}
+        {%endblock scripts%}
+
     
-    </div>
-
-    {%block scripts%}
-    {%endblock scripts%}
-
-    
-</body>
+    </body>
 </html>
