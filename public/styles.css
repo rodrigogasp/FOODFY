@@ -98,11 +98,14 @@ div.card img {
   margin-left: 200px;  
 }
 
+.footer {
+    margin-top: 0;
+}
+
 footer {
     background-color: #EEEEEE;
     width: 100%;
-    margin-top: auto;
-    min-height: 100%;
+    margin-bottom: 0;
      
 }
 
@@ -110,7 +113,8 @@ footer p {
     text-align: center;
     font-size: 14px;
     color: #999999;
-    
+    padding: 2%;
+    margin: 0
 }
 
 /* SOBRE HTML */
@@ -203,6 +207,7 @@ div.container {
     color: #999999; 
     margin-left: 8px;
     font-size: 12px;
+    transition: 500ms;
 }
 
 .content p {
@@ -220,8 +225,7 @@ line-height: 28px;
 
 .content.hide{
     visibility: hidden;
-    width: 0;
-    height: 0;
+    display: none;
 }
 .recipe ul {
     margin-left: 230px;
