@@ -4,7 +4,7 @@ const nunjucks = require("nunjucks")
 const server = express()
 const recipes = require("./data")
 
-server.listen(3000, function(){
+server.listen(5000, function(){
     console.log("server is running")
 }) 
 

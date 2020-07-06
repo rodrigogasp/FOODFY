@@ -1,24 +1,31 @@
 
 
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: white;
-    width: 1400px;
-    height: 100%;
-    margin: 0 auto;
+    min-width: 1400px;
+    min-height: 100%;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
+    position: relative;
   
  
 }
 
 div.menu {
     display: flex;
-    justify-content: left;
     align-items: center;
     justify-items: center;
-    margin-left: 200px;
+    margin: 0 auto;
     margin-top: 37px;
+    padding-right: 587px;
 
 }
 
@@ -39,13 +46,12 @@ div.menu {
 
 
 #chef {
-    width: 840px;
+    width: 940px;
     height: 366px;
-    padding: 66px 100px 0px 60px;
     background-color: #FBDFDB;
     display: flex;
     border-radius: 30px;
-    margin: 0 0 0 200px;
+    margin: 0 auto;
     margin-top: 30px;
     
 }
@@ -53,8 +59,10 @@ div.menu {
 #chef h1 {
     font-size: 32px;
     font-weight: bold;
-    margin-bottom: 10px; 
-    margin-top: 117px;
+    padding-left: 60px;
+    padding-top: 117px;
+    margin-bottom: 10px;
+
     
 
     
@@ -62,28 +70,33 @@ div.menu {
 
 #chef p {
     max-width: 316px;
+    padding-left: 60px;
+
     text-align: justify;
     opacity: 0.7;
     font-size: 18px;
-    margin-right: 249px;
-    margin-bottom: 117px;
     line-height: 28px;
 }
 
 #chef img {
     width: 216px;
     height: 300px;
-    margin-top: 66px;
+    padding-left: 248px;
+    padding-top: 66px;
+    padding-right: 100px;
 
+}
+
+.container {
+    margin: 0 auto;
 }
 
 
 div.cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-left: 200px;
-    margin-right: 200px;
-    gap: 0;
+    margin: 0 auto;
+    gap: 20px;
 }
 
 div.card img {
@@ -95,17 +108,21 @@ div.card img {
 }
 
 .container h2 {
-  margin-left: 200px;  
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  
 }
 
 .footer {
-    margin-top: 0;
+    padding-top: 20px;
 }
 
 footer {
     background-color: #EEEEEE;
     width: 100%;
     margin-bottom: 0;
+    position: absolute;
      
 }
 
@@ -114,23 +131,30 @@ footer p {
     font-size: 14px;
     color: #999999;
     padding: 2%;
-    margin: 0
+    margin: 0 auto;
 }
 
 /* SOBRE HTML */
+div.about {
+    max-width: 940px;
+
+}
+
 div.sobreofoodfy {
-    margin-left: 200px;
+   margin: 0 auto;
 }
 
 div.sobreofoodfy h1 {
     font-size: 24px;
     font-weight: bold;
+    padding: 50px 0 20px 0;
 }
 
 div.sobreofoodfy h2 {
 
     font-size: 20px;
     font-weight: bold;
+    padding: 30px 0 20px 0;
 
 }
 
@@ -138,13 +162,17 @@ div.sobreofoodfy p {
     font-size: 18px;
     line-height: 28px;
     text-align: justify;
+    box-sizing: border-box;
+    max-width: 940px;
+    padding-bottom: 30px;
 }
 
 /* PAGE RECEITAS */
 
-div.container {
-    margin-top: 50px;
+#cardsRecipes{
+    padding-top: 50px;
 }
+
 
 /* PAGE RECIPE */
 
@@ -191,9 +219,10 @@ div.container {
 .span {
     display: flex;
     align-items: center;
-    margin-left: 230px;
-    margin-right: 230px;
-    margin-bottom: 0px;
+    margin: 0 auto;
+    max-width: 940px;
+    padding-bottom: 20px;
+    padding-top: 39px;
 }
 
 .span h2 {
@@ -208,6 +237,7 @@ div.container {
     margin-left: 8px;
     font-size: 12px;
     transition: 500ms;
+    padding-top: 6px;
 }
 
 .content p {
@@ -228,11 +258,11 @@ line-height: 28px;
     display: none;
 }
 .recipe ul {
-    margin-left: 230px;
-    margin-right: 230px;
+    margin: 0 auto;
+    max-width: 940px;
 }
 
 p#information {
-    margin-left: 230px;
-    margin-right: 230px;
+    margin: 0 auto;
+    max-width: 940px;
 }
