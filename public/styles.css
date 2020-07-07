@@ -298,12 +298,18 @@ div.create {
     
 }
 
-div.item {
+div.item,
+div.ingredient,
+div.preparation,
+form p,
+#addIngredient,
+#addPreparation,
+div.buttonadd {
     margin: 0 auto;
     max-width: 940px;
 }
 
-div.item p {
+form p {
     margin-top: 30px;
     font-weight: bold;
     font-size: 16px;
@@ -316,6 +322,7 @@ border-radius: 4px;
 height: 49px;
 font-size: 16px;
 color: #111111;
+margin-top: 10px;
    
 }
 
@@ -332,12 +339,15 @@ textarea {
     box-sizing: border-box;
 }
 
-button.add {
+button.addIngredient,
+button.addPreparation {
     background: none;
     color: #6558C3;
     font-weight: bold;
     font-size: 16px;
 }
+
+
 
 button[type="submit"] {
     padding: 9px 20px;

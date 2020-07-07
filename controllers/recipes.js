@@ -21,7 +21,7 @@ exports.about = function(req, res){
 //page recipes
 
 exports.pagerecipes = function(req, res){
-    return res.render("recipes")
+    return res.render("recipes", {items: data.recipes})
 },
 
 //page recipe
@@ -63,6 +63,7 @@ exports.post = function(req, res){
     }
 
     let {
+        name,
         image_url, 
         ingredients, 
         preparation, 
@@ -82,6 +83,7 @@ exports.post = function(req, res){
 
     data.recipes.push({
         id,
+        name,
        image_url, 
         ingredients, 
         preparation, 
