@@ -266,3 +266,85 @@ p#information {
     margin: 0 auto;
     max-width: 940px;
 }
+
+/* LAYOUT ADMIN */
+
+
+.menuadmin {
+    background-color:#111111;
+    width: 100%;
+    padding: 25px;
+    margin: 0 auto;
+
+}
+
+div#logo {
+    max-width: 940px;
+    margin: 0 auto;
+    padding-right: 41px;
+}
+
+
+/* FORM */
+
+div.create {
+    display: flex;
+    max-width: 940px;
+    margin: 0 auto;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+div.item {
+    margin: 0 auto;
+    max-width: 940px;
+}
+
+div.item p {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #DDDDDD;
+border-radius: 4px;
+height: 49px;
+font-size: 16px;
+color: #111111;
+   
+}
+
+textarea {
+    border: 1px solid #DDDDDD;
+    width: 100%;
+    border-radius: 4px;
+    height: 257px;
+    margin-top: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+button.add {
+    background: none;
+    color: #6558C3;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    padding: 9px 20px;
+    background-color: #6558C3;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+
+}
