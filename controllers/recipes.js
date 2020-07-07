@@ -64,6 +64,7 @@ exports.post = function(req, res){
 
     let {
         name,
+        author,
         image_url, 
         ingredients, 
         preparation, 
@@ -84,6 +85,7 @@ exports.post = function(req, res){
     data.recipes.push({
         id,
         name,
+        author,
        image_url, 
         ingredients, 
         preparation, 
