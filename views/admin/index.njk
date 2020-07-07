@@ -1,0 +1,49 @@
+{%extends "admin/layoutadmin.njk"%}
+
+
+
+{%block title%}
+<title>Admin - Receitas</title>
+{%endblock title%}
+
+
+{%block content%}
+
+<div id="indexh1">
+
+<h1>Gerenciar Receitas</h1>
+</div>
+
+
+
+<div class="containerIndex">
+
+
+    {%for item in items%}
+    <div class="cardIndex">
+
+        <img src="{{item.image_url}}" alt="">
+
+        <div class="indexinformation">
+
+            <h4>{{item.name}}</h4>
+            <h5>{{item.author}}</h5>
+            <a href="/admin/recipes/{{item.id}}">Visualizar</a>
+
+            
+        </div>
+
+
+    </div>
+{%endfor%}
+
+
+</div>
+
+<div id="newRecipe">
+
+<a  href="/admin/create">Nova Receita</a>
+
+</div>
+
+{%endblock content%}

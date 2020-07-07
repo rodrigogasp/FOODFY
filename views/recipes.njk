@@ -11,7 +11,7 @@
         <div class="cards" id="cardsRecipes">
 
             {%for item in items%}
-            <div class="card" id="burger">
+            <div class="card" id="{{item.id}}">
 
                 <img src="{{item.image_url}}" alt="">
                 <h4>{{item.name}}</h4>
@@ -34,6 +34,6 @@
    
         
 {%block scripts%}
-<script src="scripts.js"></script>
+<script src="/scripts/scripts.js"></script>
 {%endblock scripts%}
     

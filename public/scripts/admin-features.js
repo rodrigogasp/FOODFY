@@ -36,6 +36,11 @@ const preparation = document.querySelector(".addPreparation")
 
 if(preparation)
 
-preparation.addEventListener("click", addPreparation)
+preparation.addEventListener("click", addPreparation);
+
+
+
+
+// SCRIPT DE CONFIRMAÇÃO DE DELETE
 
 

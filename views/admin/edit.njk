@@ -1,0 +1,125 @@
+{% extends "admin/layoutadmin.njk" %}
+
+{%block title%}
+<title>Editar Receita</title>
+{%endblock title%}
+
+
+
+{%block content%}
+
+
+
+    <div class="create">
+
+        <h2>Criando Receita</h2>
+        <div class="edit-buttons">
+
+        <button id="buttonDelete" type="submit" form="form-delete">Deletar Receita</button>
+        <button type="submit" form="form-edit">Salvar Receita</button>
+
+        </div>
+
+    </div>
+
+<form action="/admin?_method=PUT" method="post" class="card" id="form-edit">
+
+    <div class="item">
+
+        <p>Nome</p>
+        <input type="text" name="name" value="{{item.name}}">
+
+
+    </div>
+
+    <div class="item">
+
+        <p>Autor</p>
+        <input type="text" name="author" value="{{item.author}}">
+
+
+    </div>
+
+    <div class="item">
+
+        <p>Imagem da Receita</p>
+        <input type="url" name="image_url" value="{{item.image_url}}">
+
+
+    </div>
+
+    <div id="addIngredient">
+
+        <p>Ingredientes</p>
+
+        {%for ingredient in item.ingredients%}
+        <div class="ingredient">
+            <input type="text" name="ingredients[]" value="{{ingredient}}">
+        </div>
+        {%endfor%}
+    </div>
+
+    <div class="buttonadd">
+
+        <button type="button" class="addIngredient">Adicionar novo ingrediente</button>
+
+    </div>
+
+    <div id="addPreparation">
+
+
+        <p>Modo de preparo</p>
+        {%for preparation in item.preparation %}
+        <div class="preparation">
+
+            <input type="text" name="preparation[]" value="{{preparation}}">
+
+        </div>
+        {%endfor%}
+    </div>
+
+    <div class="buttonadd">
+
+        <button type="button" class="addPreparation">Adicionar novo passo</button>
+
+    </div>
+
+    <div class="item">
+
+        <p>Informações adicionais</p>
+        <textarea name="informations" cols="30" rows="10">{{item.informations}}</textarea>
+
+    </div>
+
+    <input type="hidden" name="id" value="{{item.id}}">
+
+</form>
+
+<form action="/admin?_method=DELETE" method="post" id="form-delete">
+
+<input type="hidden" name="id" value="{{item.id}}">
+
+
+</form>
+
+{% include "admin/confirm.njk"%}
+
+{%endblock content%}
+
+
+{%block scripts%}
+
+<script src="/scripts/admin-features.js"></script>
+
+
+ {%endblock scripts%}
+
+
+
+
+
+
+
+
+
+

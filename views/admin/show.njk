@@ -1,4 +1,4 @@
-{%extends "layout.njk"%}
+{%extends "admin/layoutadmin.njk"%}
 
 {%block title%}
 <title>Receita - {{item.title}}</title>
@@ -6,6 +6,13 @@
 {%endblock title%}
 
 {%block content%}
+<div class="show">
+
+<h1>Receita: {{item.name}}</h1>
+<a href="/admin/recipes/{{item.id}}/edit">Editar Receita</a>
+
+</div>
+
     <section class="recipe">
 
         <div class=image>
@@ -26,7 +33,7 @@
             
                 <h2>Ingredientes</h2>
 
-                <span>Esconder</span>
+              
 
             </div>
 
@@ -45,7 +52,7 @@
                 <div class="span">
 
                     <h2>Modo de Preparo</h2>
-                    <span>Esconder</span>
+
 
                 </div>
 
@@ -64,14 +71,11 @@
 
                         <h2>Informações</h2>
 
-
-                        <span>Esconder</span>
-
                     </div>
 
             <div class="content">
 
-                <p id="information">{{item.information}}</p>
+                <p id="information">{{item.informations}}</p>
 
             </div>
 
@@ -80,8 +84,4 @@
 
     </section>
 
-{%endblock content%}
-
-{%block scripts%}
-    <script src="/scripts/scripts.js"></script>
-{%endblock scripts%}
+{%endblock content%}    

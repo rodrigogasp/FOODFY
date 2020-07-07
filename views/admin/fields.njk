@@ -1,17 +1,4 @@
-{%extends "admin/layoutadmin.njk"%}
-
-{%block title%}
-<title>Nova Receita</title>
-{%endblock title%}
-
-
-
-{%block content%}
-
-<form action="/admin" method="post" class="card">
-
-
-    <div class="create">
+<div class="create">
 
         <h2>Criando Receita</h2>
         <button type="submit">Salvar Receita</button>
@@ -22,7 +9,7 @@
     <div class="item">
 
         <p>Nome</p>
-        <input type="text" name="name">
+        <input type="text" name="name" value="{{item.name}}">
 
 
     </div>
@@ -30,7 +17,7 @@
     <div class="item">
 
         <p>Autor</p>
-        <input type="text" name="author">
+        <input type="text" name="author" value="{{item.author}}">
 
 
     </div>
@@ -38,7 +25,7 @@
     <div class="item">
 
         <p>Imagem da Receita</p>
-        <input type="url" name="image_url">
+        <input type="url" name="image_url" value="{{item.image_url}}">
 
 
     </div>
@@ -47,10 +34,11 @@
 
         <p>Ingredientes</p>
 
+        {%for ingredient in item.ingredients%}
         <div class="ingredient">
-            <input type="text" name="ingredients[]">
+            <input type="text" name="ingredients[]" value="{{ingredient}}">
         </div>
-
+        {%endfor%}
     </div>
 
     <div class="buttonadd">
@@ -63,12 +51,13 @@
 
 
         <p>Modo de preparo</p>
-
+        {%for preparation in item.preparation %}
         <div class="preparation">
 
-            <input type="text" name="preparation[]">
+            <input type="text" name="preparation[]" value="{{preparation}}">
 
         </div>
+        {%endfor%}
     </div>
 
     <div class="buttonadd">
@@ -80,29 +69,6 @@
     <div class="item">
 
         <p>Informações adicionais</p>
-        <textarea name="informations" cols="30" rows="10"></textarea>
+        <textarea name="informations" cols="30" rows="10">{{item.informations}}</textarea>
 
     </div>
-
-
-</form>
-
-
-
-{%endblock content%}
-
-
-{%block scripts%}
-<script src="/scripts/admin-features.js"></script>
-
-
- {%endblock scripts%}
-
-
-
-
-
-
-
-
-
