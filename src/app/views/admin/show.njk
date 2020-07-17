@@ -8,7 +8,7 @@
 {%block content%}
 <div class="show">
 
-<h1>Receita: {{item.name}}</h1>
+<h1>Receita: {{item.title}}</h1>
 <a href="/admin/recipes/{{item.id}}/edit">Editar Receita</a>
 
 </div>
@@ -17,14 +17,14 @@
 
         <div class=image>
 
-            <img src="{{item.image_url}}" alt="">
+            <img src="{{item.image}}" alt="">
 
         </div>
 
         <div class="title">
 
-            <h1>{{item.name}}</h1>
-            <p> por {{item.author}}</p>
+            <h1>{{item.title}}</h1>
+            <p> por {{item.chef_id}}</p>
         </div>
 
         <div class="recipe-description">
@@ -75,7 +75,7 @@
 
             <div class="content">
 
-                <p id="information">{{item.informations}}</p>
+                <p id="information">{{item.information}}</p>
 
             </div>
 

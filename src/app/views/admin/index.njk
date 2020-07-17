@@ -22,12 +22,12 @@
     {%for item in items%}
     <div class="cardIndex">
 
-        <img src="{{item.image_url}}" alt="">
+        <img src="{{item.image}}" alt="">
 
         <div class="indexinformation">
 
-            <h4>{{item.name}}</h4>
-            <h5>{{item.author}}</h5>
+            <h4>{{item.title}}</h4>
+            <h5>{{item.chef_id}}</h5>
             <a href="/admin/recipes/{{item.id}}">Visualizar</a>
 
             
