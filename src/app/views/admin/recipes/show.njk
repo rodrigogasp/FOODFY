@@ -1,15 +1,15 @@
 {%extends "admin/layoutadmin.njk"%}
 
 {%block title%}
-<title>Receita - {{item.title}}</title>
+<title>Receita - {{items.title}}</title>
 
 {%endblock title%}
 
 {%block content%}
 <div class="show">
 
-<h1>Receita: {{item.title}}</h1>
-<a href="/admin/recipes/{{item.id}}/edit">Editar Receita</a>
+<h1>Receita: {{items.title}}</h1>
+<a href="/admin/recipes/{{items.id}}/edit">Editar Receita</a>
 
 </div>
 
@@ -17,14 +17,14 @@
 
         <div class=image>
 
-            <img src="{{item.image}}" alt="">
+            <img src="{{items.image}}" alt="">
 
         </div>
 
         <div class="title">
 
-            <h1>{{item.title}}</h1>
-            <p> por {{item.chef_id}}</p>
+            <h1>{{items.title}}</h1>
+            <p> por {{options.name}}</p>
         </div>
 
         <div class="recipe-description">
@@ -39,7 +39,7 @@
 
                 <ul class="content">
 
-                    {%for ingredients in item.ingredients%}
+                    {%for ingredients in items.ingredients%}
                     <li>{{ingredients}}</li>
                     {%endfor%}
 
@@ -57,7 +57,7 @@
                 </div>
 
             <ul class="content">
-                {%for preparation in item.preparation%}
+                {%for preparation in items.preparation%}
                 <li>{{preparation}}</li>
                 {%endfor%}
             </ul>
@@ -75,7 +75,7 @@
 
             <div class="content">
 
-                <p id="information">{{item.information}}</p>
+                <p id="information">{{items.information}}</p>
 
             </div>
 

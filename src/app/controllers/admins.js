@@ -1,11 +1,13 @@
 
 
 const Admin = require("../models/admin")
+const { selectChefOptions } = require("../models/admin")
 
 
 module.exports = {
 
     index(req, res) {
+
 
     Admin.all(function(items){
 
@@ -16,11 +18,17 @@ module.exports = {
     },
     show (req, res) {
     
-        Admin.find(req.params.id, function(item){
+        Admin.find(req.params.id, function(items){
 
-            if (!item) return res.send("Recipe not found")
+            if (!items) return res.send("Recipe not found!")
 
-            return res.render(`admin/recipes/show`, {item})
+
+            Admin.selectChefOption(function(options){
+
+
+                return res.render(`admin/recipes/show`, {items, options})
+
+            })
 
         })
 
@@ -28,20 +36,36 @@ module.exports = {
     },
     create(req, res) {
 
+        Admin.selectChefOptions(function(items){
 
-        return res.render("admin/recipes/create")
+
+            return res.render("admin/recipes/create", {items})
+
+
+        })
+
+        
+
+
     },
     edit(req, res) {
 
-        Admin.find(req.params.id, function(item){
+        Admin.find(req.params.id, function(items){
 
-            if (!item) return res.send("Recipe not found")
+            if (!items) return res.send("Recipe not found!") 
 
-            return res.render(`admin/recipes/edit`, {item})
+
+            Admin.selectChefOptions(function(options){
+
+
+                return res.render("admin/recipes/edit", {items, options}) 
+
+            })
 
         })
-    
-       return
+
+
+  
     },
     post(req, res){
 
@@ -60,7 +84,7 @@ module.exports = {
 
         })
     
-    return
+ 
     
     
     },
@@ -71,7 +95,7 @@ module.exports = {
 
         })
     
-        return
+      
     }
 
 

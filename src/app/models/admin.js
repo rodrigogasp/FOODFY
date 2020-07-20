@@ -8,16 +8,17 @@ all(callback) {
 
     db.query(
     `
-    SELECT *
+    SELECT recipes.*, chefs.name AS chefs_name
     FROM recipes
-    ORDER BY recipes.title ASC
+    LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
+    ORDER BY recipes.id ASC
     `, function(err, results) {
 
         if(err) throw `Database Error! ${err}`
 
         callback(results.rows)
 
-    })
+    }) 
 
 },
 create(data, callback) {
@@ -95,7 +96,7 @@ update(data, callback) {
             return res.send("Please, fill all fields!")
         }
     }
-
+ 
     const query = `
     
     UPDATE recipes SET
@@ -105,9 +106,9 @@ update(data, callback) {
         ingredients=($4),
         preparation=($5),
         information=($6)
-        WHERE id = $7
+        WHERE id = $7 
     `
-
+ 
     const values = [
 
         data.chef_id,
@@ -139,8 +140,47 @@ delete(id, callback) {
         return callback()
 
     })
-}
+},
+selectChefOptions(callback) {
 
+db.query(`
+
+select name, id from chefs
+
+
+`, function(err, results){
+
+if (err) throw `Database Error! ${err}`
+
+callback(results.rows)
+
+
+
+})
+
+
+
+},
+selectChefOption(callback) {
+
+    db.query(`
+    
+    select name, id from chefs
+    
+    
+    `, function(err, results){
+    
+    if (err) throw `Database Error! ${err}`
+    
+    callback(results.rows[0])
+    
+    
+    
+    })
+    
+    
+    
+    }
 
 
 }

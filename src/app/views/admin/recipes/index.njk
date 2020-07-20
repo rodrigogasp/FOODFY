@@ -27,7 +27,7 @@
         <div class="indexinformation">
 
             <h4>{{item.title}}</h4>
-            <h5>{{item.chef_id}}</h5>
+            <h5>por {{item.chefs_name}}</h5>
             <a href="/admin/recipes/{{item.id}}">Visualizar</a>
 
             
@@ -35,14 +35,14 @@
 
 
     </div>
-{%endfor%}
+    {%endfor%}
 
 
 </div>
 
 <div id="newRecipe">
 
-<a  href="/admin/create">Nova Receita</a>
+<a  href="/admin/recipes/create">Nova Receita</a>
 
 </div>
 

@@ -290,8 +290,15 @@ div#logo {
     align-items: center;
 }
 
+div#logo a:nth-child(2).active,
+div#logo a:nth-child(3).active {
+
+    color: white;
+
+}
+
 div#logo a:nth-child(2){
-color: white;
+color:  #999999;
 margin-left: 50px;
 text-decoration: none;
 font-size: 15px;
@@ -300,7 +307,7 @@ font-weight: bold;
 }
 
 div#logo a:nth-child(3) {
-color: white;
+color: #999999;
 margin-left: 30px;
 text-decoration: none;
 font-size: 15px;
@@ -342,7 +349,8 @@ form p {
     font-size: 16px;
 }
 
-input {
+input,
+select {
     width: 100%;
     border: 1px solid #DDDDDD;
 border-radius: 4px;
@@ -385,6 +393,13 @@ button[type="submit"] {
     text-align: center;
     cursor: pointer;
 
+}
+
+.formheader {
+    display: flex;
+    width: 940px;
+    margin: 0 auto;
+    justify-content: space-between;
 }
 
 
@@ -523,6 +538,7 @@ div.create {
 div.indexchef {
     width: 940px;
     margin: 0 auto;
+    position: relative;
 }
 
 div.indexchef h2 {
@@ -530,7 +546,33 @@ div.indexchef h2 {
 padding-top: 50px;
 padding-bottom: 39px;
 margin: 0 auto;
+margin-top: 10px;
 
+
+}
+
+div.indexchef a:first-child {
+
+padding: 9px 20px;
+text-decoration: none;
+background-color: #6558C3;
+box-sizing: border-box;
+position: absolute;
+right: 0;
+color: white;
+margin-top: 50px;
+margin-bottom: 5px;
+border-radius: 8px;
+box-shadow: 6px 7px 16px 0px #77777768;
+justify-self: center;
+
+
+
+
+}
+
+div.indexchef a:first-child:hover {
+    box-shadow: 6px 7px 16px 0px #777777ce
 }
 
 div.cheflist{
@@ -586,4 +628,33 @@ height: 200px;
 border-radius: 50%;
 
 
+}
+
+#chefrecipeslist {
+
+    padding-top: 50px;
+    padding-bottom: 30px;
+    width: 940px;
+    margin: 0 auto;
+}
+
+/* EDIT CHEFS */
+
+.formheader {
+
+    padding-top: 55px;
+
+}
+
+.buttonschef :nth-child(1) {
+
+    background-color: #DC4747;
+   padding: 9px 20px;
+   margin-right: 10px;
+
+}
+
+.buttonschef :nth-child(2) {
+
+    padding: 9px 20px;
 }

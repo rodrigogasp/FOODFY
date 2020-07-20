@@ -1,6 +1,5 @@
 
 const Chef = require("../models/chef")
-const chef = require("../models/chef")
 
 
 module.exports = {
@@ -13,7 +12,7 @@ Chef.all(function(items){
 
     return res.render("admin/chefs/index", {items})
 
-
+ 
 })
 
 
@@ -41,14 +40,71 @@ Chef.create(req.body, function(items){
 },
 show(req, res){
 
-Chef.find(req.params.id, function(item){
+  Chef.showChef(req.params.id, function(items){
 
-if(!item) return res.send("Chef not found")
+    if(!items) return res.send("Chef not found!")
 
-return res.render(`admin/chefs/show`, {item})
 
+    Chef.find(req.params.id, function(chef){
+
+        return res.render("admin/chefs/show", {items, chef}) 
+
+
+    })
+
+
+
+  })
+
+},
+edit(req, res) {
+
+    Chef.showChef(req.params.id, function(items){
+
+        if(!items) return res.send("Chef not found!")
+    
+    
+        Chef.find(req.params.id, function(chef){
+    
+            return res.render("admin/chefs/edit", {items, chef}) 
+    
+    
+        })
+    
+    
+    
+      })
+  
+
+},
+put(req, res) {
+
+    const keys = Object.keys(req.body)
+
+    for(key of keys) {
+        if (req.body[key]== "") {
+
+            return res.send("Please, fill all fields!")
+        }
+    }
+
+Chef.update(req.body, function(){
+
+
+    return res.redirect(`/admin/chefs/${req.body.id}`)
 
 })
+
+
+},
+delete(req, res) {
+
+    Chef.delete(req.body.id, function(){
+
+
+        return res.redirect("/admin/chefs")
+
+    })
 
 
 

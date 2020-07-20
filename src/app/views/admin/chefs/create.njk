@@ -6,32 +6,13 @@
 
 <form id="create-chef" action="/admin/chefs" method="post" class="card">
 
+<div class="formheader">
 
-  <div class="create">
-
-        <h2>Criando Chef</h2>
+<h2>Criando Chef</h2>
     <button form="create-chef" type="submit">Salvar chef</button>
 
-
-    </div>
-
-
-    <div class="item">
-
-        <p>Nome</p>
-        <input type="text" name="name">
-
-
-    </div>
-
-    <div class="item">
-
-        <p>Avatar</p>
-        <input type="url" name="image">
-
-
-    </div>
-
+</div>
+{% include "admin/chefs/fields.njk" %}
 
 
 

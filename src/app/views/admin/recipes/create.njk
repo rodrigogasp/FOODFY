@@ -30,7 +30,14 @@
     <div class="item">
 
         <p>Autor</p>
-        <input type="number" name="chef_id">
+        <select name="chef_id">
+
+            <option id="placeholder" value="" disabled selected>Selecione um chef</option>
+            {%for chef in items%}
+            <option value="{{chef.id}}">{{chef.name}}</option>
+            {%endfor%}
+
+        </select>
 
 
     </div>

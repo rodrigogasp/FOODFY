@@ -41,6 +41,21 @@ preparation.addEventListener("click", addPreparation);
 
 
 
-// SCRIPT DE CONFIRMAÇÃO DE DELETE
+
+
+
+// SCRIPT DE HEADER
+
+const currentPage = location.pathname
+
+const menuitems = document.querySelectorAll("header #logo a")
+
+
+
+for (item of menuitems) {
+    if (currentPage.includes(item.getAttribute("href"))){
+        item.classList.add("active")
+    }
+}
 
 
