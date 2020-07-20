@@ -4,6 +4,7 @@ const routes = express.Router()
 
 const recipes = require("./app/controllers/recipes")
 const admin = require("./app/controllers/admins")
+const chef = require("./app/controllers/chefs")
 
 
 
@@ -15,16 +16,24 @@ routes.get("/receita/:id", recipes.recipe)
 
 
 
-//route admin
+//route admin recipes
 routes.get("/admin", function(req,res){return res.redirect("/admin/recipes")})
-routes.get("/admin/create", admin.create)
+routes.get("/admin/recipes/create", admin.create)
 routes.get("/admin/recipes", admin.index)
 routes.get("/admin/recipes/:id", admin.show)
 routes.get("/admin/recipes/:id/edit", admin.edit)
+routes.post("/admin/recipes", admin.post )
+routes.put ("/admin/recipes", admin.put)
+routes.delete("/admin/recipes", admin.delete)
 
 
-routes.post("/admin", admin.post )
-routes.put ("/admin", admin.put)
-routes.delete("/admin", admin.delete)
+//route admin chef
 
-module.exports = routes
+routes.get("/admin/chefs", chef.index)
+routes.get("/admin/chefs/create", chef.create)
+routes.get("/admin/chefs/:id", chef.show)
+
+
+routes.post("/admin/chefs", chef.post)
+
+module.exports = routes    

@@ -286,7 +286,30 @@ div#logo {
     max-width: 940px;
     margin: 0 auto;
     padding-right: 41px;
+    display: flex;
+    align-items: center;
 }
+
+div#logo a:nth-child(2){
+color: white;
+margin-left: 50px;
+text-decoration: none;
+font-size: 15px;
+text-transform: uppercase;
+font-weight: bold;
+}
+
+div#logo a:nth-child(3) {
+color: white;
+margin-left: 30px;
+text-decoration: none;
+font-size: 15px;
+text-transform: uppercase;
+font-weight: bold;
+
+}
+
+
 
 
 /* FORM */
@@ -492,4 +515,75 @@ div.create {
 
 #buttonDelete {
     background-color: rgba(255, 0, 0, 0.637);
+}
+
+
+/* CHEF INDEX */
+
+div.indexchef {
+    width: 940px;
+    margin: 0 auto;
+}
+
+div.indexchef h2 {
+
+padding-top: 50px;
+padding-bottom: 39px;
+margin: 0 auto;
+
+}
+
+div.cheflist{
+
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+width: 940px;
+margin: 0 auto;
+gap: 20px
+
+
+}
+
+div.chefcard {
+
+    display: flex;
+}
+
+
+div.chefcard img {
+
+width: 64px;
+height: 64px;
+border-radius: 50%;
+margin-right: 20px;
+
+}
+
+div.chefcard p {
+
+    font-size: 18px;
+    color: #111111;
+    padding-bottom: 10px;
+
+}
+
+div.chefcard a {
+
+text-decoration: none;
+font-weight: bold;
+font-size: 14px;
+color: #6558C3;
+
+}
+
+
+/* SHOW CHEF */
+
+#imgchefshow{
+
+width: 200px;
+height: 200px;
+border-radius: 50%;
+
+
 }

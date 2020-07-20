@@ -9,7 +9,7 @@ module.exports = {
 
     Admin.all(function(items){
 
-        return res.render("admin/index", {items})
+        return res.render("admin/recipes/index", {items})
 
     })
     
@@ -20,7 +20,7 @@ module.exports = {
 
             if (!item) return res.send("Recipe not found")
 
-            return res.render(`admin/show`, {item})
+            return res.render(`admin/recipes/show`, {item})
 
         })
 
@@ -29,7 +29,7 @@ module.exports = {
     create(req, res) {
 
 
-        return res.render("admin/create")
+        return res.render("admin/recipes/create")
     },
     edit(req, res) {
 
@@ -37,7 +37,7 @@ module.exports = {
 
             if (!item) return res.send("Recipe not found")
 
-            return res.render(`admin/edit`, {item})
+            return res.render(`admin/recipes/edit`, {item})
 
         })
     
@@ -67,7 +67,7 @@ module.exports = {
     delete(req,res) {
 
         Admin.delete(req.body.id, function(){
-            return res.redirect("/admin")
+            return res.redirect("/admin/recipes")
 
         })
     

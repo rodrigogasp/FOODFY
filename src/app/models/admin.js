@@ -82,7 +82,7 @@ find(id, callback) {
     }
 
 
-    )
+    ) 
 
 },
 update(data, callback) {

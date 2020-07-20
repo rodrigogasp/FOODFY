@@ -22,7 +22,7 @@
 
     </div>
 
-<form action="/admin?_method=PUT" method="post" class="card" id="form-edit">
+<form action="/admin/recipes?_method=PUT" method="post" class="card" id="form-edit">
 
     <div class="item">
 
@@ -95,14 +95,14 @@
 
 </form>
 
-<form action="/admin?_method=DELETE" method="post" id="form-delete">
+<form action="/admin/recipes?_method=DELETE" method="post" id="form-delete">
 
 <input type="hidden" name="id" value="{{item.id}}">
 
 
 </form>
 
-{% include "admin/confirm.njk"%}
+{% include "admin/recipes/confirm.njk"%}
 
 {%endblock content%}
 

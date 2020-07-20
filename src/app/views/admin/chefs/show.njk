@@ -1,0 +1,34 @@
+{%extends "admin/layoutadmin.njk"%}
+
+
+{%block title%}
+<title>Chef - {{item.name}}</title>
+
+{%endblock title%}
+
+{%block content%}
+<div class="show">
+
+<h1>Chef: {{item.name}}</h1>
+<a href="/admin/chefs/{{item.id}}/edit">Editar Chef</a>
+
+</div>
+
+    <section class="recipe">
+
+        <div class=image>
+
+            <img id="imgchefshow" src="{{item.avatar_url}}" alt="">
+
+        </div>
+
+        <div class="title">
+
+            <h1>{{item.name}}</h1>
+            <p> receitas</p>
+        </div>
+
+
+    </section>
+
+{%endblock content%}    

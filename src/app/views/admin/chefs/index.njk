@@ -1,0 +1,37 @@
+{%extends "admin/layoutadmin.njk"%}
+
+{%block content%}
+
+<div class="indexchef">
+
+
+
+    <h2>Gerenciar Chefs</h2>
+
+
+    <div class="cheflist">
+        {%for item in items%}
+        <div class="chefcard">
+
+           <img src="{{item.avatar_url}}" alt="">
+
+            
+           <div>
+
+            <p>{{item.name}}</p>
+            <a href="/admin/chefs/{{item.id}}">Visualizar</a>
+
+           </div>
+        </div>
+        {%endfor%}
+
+
+
+    </div>
+
+
+
+</div>
+
+
+{%endblock content%}
