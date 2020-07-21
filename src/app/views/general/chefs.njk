@@ -1,0 +1,26 @@
+{%extends "general/layout.njk"%}
+
+{%block content%}
+
+    <div id="indexchefgeneral" class="indexchef">
+
+        <div id="cheflistgeneral" class="cheflist">
+            {%for item in item%}
+                <div class="chefcard">
+
+                    <img src="{{item.avatar_url}}" alt="">
+
+                    <div>
+
+                        <p>{{item.name}}</p>
+                        <p>{{item.total_recipes}}
+                            receitas</p>
+                    </div>
+                </div>
+                {%endfor%}
+
+            </div>
+
+        </div>
+    </div>
+{%endblock content%}

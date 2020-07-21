@@ -26,7 +26,7 @@ div.menu {
     justify-items: center;
     margin: 0 auto;
     margin-top: 37px;
-    padding-right: 587px;
+    width: 940px;
 
 }
 
@@ -43,6 +43,17 @@ div.menu {
     font-size: 16px;
     margin-left: 30px;
     
+}
+
+.menu a.active{
+
+font-weight: bold;
+
+}
+
+.menu a:first-child{
+
+    margin: 0;
 }
 
 
@@ -175,6 +186,40 @@ div.sobreofoodfy p {
 
 #cardsRecipes{
     padding-top: 50px;
+}
+
+div.menu {
+    position: relative;
+}
+
+form#filter-recipes {
+
+display: grid;
+grid-template-columns: 246px 91px;
+gap: 8px;
+align-items: center;
+position: absolute;
+right: 0;    
+
+}
+
+form#filter-recipes input{
+
+    width: 100%;  
+    height: 100%; 
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #111111;
+    margin-top: 0;
+
+  
+}
+
+form#filter-recipes button {
+
+width: 100%;
+    
 }
 
 
@@ -657,4 +702,38 @@ border-radius: 50%;
 .buttonschef :nth-child(2) {
 
     padding: 9px 20px;
+}
+
+
+/* CHEF GENERALS */
+
+
+#indexchefgeneral {
+
+padding-top: 50px;
+
+
+}
+
+#cheflistgeneral {
+
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#cheflistgeneral p:first-child {
+
+
+color: #111111;
+font-size: 18px;
+padding-bottom: 5px;
+
+
+}
+
+#cheflistgeneral p{
+
+color: #666666;
+font-size: 14px;
+
+
 }

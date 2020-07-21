@@ -20,62 +20,30 @@
         </div>
         
         <h2>Mais acessadas</h2>
-        <div class="cards">
+        
+        <div class="cards" id="cardsRecipes">
 
+            {%for item in item%}
+            <div class="card" id="{{item.id}}">
 
-            <div class="card" id="1">
+                <a href="/recipe/{{item.id}}">
+                <img src="{{item.image}}" alt="imagem de {{item.title}}">
 
-                <img src="assets/burger.png" alt="">
-                <h4 id="Triplo bacon burger">Triplo bacon burger</h4>
-                <p>por Jorge Relato</p>
-
-
-            </div>
-
-            <div class="card" id= "2">
-
-                <img src="assets/pizza.png" alt="">
-                <h4>Pizza 4 Estações</h4>
-                <p>por Fabiana Melo</p>
+                </a>
+                <h4>{{item.title}}</h4>
+                <p>por {{item.chefs_name}}</p>
 
 
             </div>
 
-            <div class="card" id="5">
+            {%endfor%}
 
-                <img src="assets/espaguete.png" alt="">
-                <h4>Espaguete ao alho</h4>
-                <p>por Júlia Kinoto</p>
-
-            </div>
-
-            <div class="card" id="4">
-
-                <img src="assets/lasanha.png" alt="">
-                <h4>Lasanha mac n’ cheese </h4>
-                <p>por Juliano Vieira</p>
-
-            </div>
-
-            <div class="card" id="6">
-
-                <img src="assets/doce.png" alt="">
-                <h4>Docinhos pão-do-céu</h4>
-                <p>por Ricardo Golvea</p>
-
-            </div>
-
-            <div class="card" id="3">
-
-                <img src="assets/asinhas.png" alt="">
-                <h4>Asinhas de frango ao barbecue</h4>
-                <p>por Vania Steroski</p>
-
-            </div>
 
 
 
         </div>
+
+           
 
     </div>
 

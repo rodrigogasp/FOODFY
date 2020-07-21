@@ -2,17 +2,18 @@ const express = require("express")
 
 const routes = express.Router()
 
-const recipes = require("./app/controllers/recipes")
+const generals = require("./app/controllers/generals")
 const admin = require("./app/controllers/admins")
 const chef = require("./app/controllers/chefs")
 
 
 
 
-routes.get("/", recipes.home)
-routes.get("/sobre", recipes.about )
-routes.get("/receitas", recipes.pagerecipes )
-routes.get("/receita/:id", recipes.recipe)
+routes.get("/", generals.home)
+routes.get("/sobre", generals.about )
+routes.get("/receitas", generals.pagerecipes )
+routes.get("/recipe/:id",generals.recipe)
+routes.get("/chefs", generals.chef)
 
 
 
@@ -22,7 +23,7 @@ routes.get("/admin/recipes/create", admin.create)
 routes.get("/admin/recipes", admin.index)
 routes.get("/admin/recipes/:id", admin.show)
 routes.get("/admin/recipes/:id/edit", admin.edit)
-routes.post("/admin/recipes", admin.post )
+routes.post("/admin/recipes", admin.post ) 
 routes.put ("/admin/recipes", admin.put)
 routes.delete("/admin/recipes", admin.delete)
 
