@@ -9,25 +9,61 @@ module.exports = {
 
     home(req, res){
 
-        General.all(function(item){
+        let { filter, page, limit } = req.query
 
-            return res.render("general/home", {item})
-
-
-
-        })
-
+        page = page || 1
+        limit = limit || 6
+        let offset = limit * (page - 1)
+  
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(recipes) {
+  
+                const pagination = {
+                    total: Math.ceil(recipes[0].total / limit),
+                    page
+                }
+                return res.render('general/home', { recipes, pagination, filter })
+            }
+        }
+        General.paginate(params) 
     },
     about(req, res){
         return res.render("general/about")
     },
     pagerecipes(req, res){
 
-        General.all(function(item){
+      //  General.all(function(item){
 
-            return res.render("general/recipes", {item})
+           // return res.render("general/recipes", {item})
 
-        })
+      //  })
+
+
+      let { filter, page, limit } = req.query
+
+      page = page || 1
+      limit = limit || 9
+      let offset = limit * (page - 1)
+
+      const params = {
+          filter,
+          page,
+          limit,
+          offset,
+          callback(recipes) {
+
+              const pagination = {
+                  total: Math.ceil(recipes[0].total / limit),
+                  page
+              }
+              return res.render('general/recipes', { recipes, pagination, filter })
+          }
+      }
+      General.paginate(params)  
 
 
     },

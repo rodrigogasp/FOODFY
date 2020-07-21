@@ -5,7 +5,7 @@
     {%endblock title%}
 
     {%block menu%}
-     <form id="filter-recipes" action="/general" method="GET">
+     <form id="filter-recipes" action="/receitas" method="GET">
         
             <input  type="text" 
                     name="filter"
@@ -20,11 +20,16 @@
 
 
     {%block content%}
+    <div class="searchFor">
+
+    <h2 >Buscando por : '{{filter}}'</h2>
+
+    </div>
     <div class="container">
         
         <div class="cards" id="cardsRecipes">
 
-            {%for item in item%}
+            {%for item in recipes%}
             <div class="card" id="{{item.id}}">
 
                 <a href="/recipe/{{item.id}}">
@@ -32,7 +37,7 @@
 
                 </a>
                 <h4>{{item.title}}</h4>
-                <p>por {{item.chefs_name}}</p>
+                <p>por {{item.chef_name}}</p>
 
 
             </div>
@@ -44,13 +49,14 @@
 
         </div>
 
+         <div class="pagination" data-page={{pagination.page}} data-total={{pagination.total}} data-filter={{filter}}></div>
+
     </div>
+
+ 
 
     {%endblock content%}
 
+
    
         
-{%block scripts%}
-<script src="/scripts/scripts.js"></script>
-{%endblock scripts%}
-    

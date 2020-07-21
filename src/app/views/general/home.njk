@@ -3,7 +3,19 @@
   {%block title%}
     <title>Home</title>
     {%endblock title%}
+  {%block menu%}
+     <form id="filter-recipes" action="/receitas" method="GET">
+        
+            <input  type="text" 
+                    name="filter"
+                   placeholder="Buscar uma receita"
+                   value="{{filter}}"
+            >
 
+            <button form="filter-recipes" type="submit">Filtrar</button>
+        
+        </form>
+    {%endblock menu%}
 
     {%block content%}
     <div class="container">
@@ -23,7 +35,7 @@
         
         <div class="cards" id="cardsRecipes">
 
-            {%for item in item%}
+            {%for item in recipes%}
             <div class="card" id="{{item.id}}">
 
                 <a href="/recipe/{{item.id}}">
@@ -31,7 +43,7 @@
 
                 </a>
                 <h4>{{item.title}}</h4>
-                <p>por {{item.chefs_name}}</p>
+                <p>por {{item.chef_name}}</p>
 
 
             </div>
@@ -51,6 +63,4 @@
     
     {%endblock content%}
 
-    {%block scripts%}
-    <script src="/scripts/scripts.js"></script>
-    {%endblock scripts%}
+    

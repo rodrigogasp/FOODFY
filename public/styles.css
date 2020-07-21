@@ -222,6 +222,45 @@ width: 100%;
     
 }
 
+div.pagination {
+
+    width: 940px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.pagination a {
+
+    text-decoration: none;
+    padding-top: 20px;
+    font-size: 18px;
+    margin: 0 5px;
+    color: black;
+    font-weight: bold;
+
+
+    
+}
+
+div.searchFor {
+    width: 940px;
+    margin: 0 auto;
+    padding-top: 52px;
+    padding-bottom: 20px;
+}
+
+div.active {
+
+visibility: hidden;
+opacity: 0;
+padding: 0;
+
+
+}
+   
+
 
 /* PAGE RECIPE */
 
