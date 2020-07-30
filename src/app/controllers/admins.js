@@ -1,6 +1,7 @@
 
 
 const Admin = require("../models/admin")
+const File = require("../models/file")
 const { selectChefOptions } = require("../models/admin")
 
 
@@ -67,12 +68,33 @@ module.exports = {
 
   
     },
-    post(req, res){
+    async post(req, res){
 
-        Admin.create(req.body, function(items){
+        const keys = Object.keys(req.body)
 
-            return res.redirect(`/admin/recipes`)
-        })
+        for(key of keys) {
+            if (req.body[key] == "") {
+                return res.send('Please, fill all fields!')
+            }
+        }
+
+        if (req.files.length == 0)
+            return res.send('Please, send at least one image')
+
+
+        let results = await Admin.create(req.body)
+        const recipeID = results.rows[0].id
+        
+
+        const filespromise = req.files.map(file => File.create({...file}))
+
+        
+        await Promise.all(filespromise)
+
+        
+
+        return res.redirect("/admin/recipes")
+
 
      
     },

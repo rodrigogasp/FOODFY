@@ -21,36 +21,25 @@ all(callback) {
     }) 
 
 },
-create(data, callback) {
+create(data) {
 
-    const keys = Object.keys(data)
-
-    for(key of keys) {
-        if (data[key]== "") {
-
-            return res.send("Please, fill all fields!")
-        }
-    }
-
-
+    
     const query = `
     
     INSERT into recipes (
 
         chef_id,
-        image,
         title,
         ingredients,
         preparation,
         information
-    ) VALUES ($1, $2, $3, $4, $5, $6)
+    ) VALUES ($1, $2, $3, $4, $5)
     RETURNING id
     
     `
 
     const values = [
         data.chef_id,
-        data.image,
         data.title,
         data.ingredients,
         data.preparation,
@@ -58,12 +47,7 @@ create(data, callback) {
     
     ]
 
-    db.query(query, values, function(err, results){
-
-        if (err) throw `Database Error! ${err}`
-
-        callback(results.rows[0])
-    })
+    return db.query(query, values)
 
 
 

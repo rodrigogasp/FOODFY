@@ -107,3 +107,5 @@ search.classList.add("active")
 
 console.log(search)
 console.log(search2)
+
+

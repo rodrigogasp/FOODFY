@@ -76,7 +76,7 @@ create(data, callback) {
 
 },
 showChef(id, callback) {
-    db.query(` SELECT chefs.*, recipes.title as recipe_name, recipes.image as recipe_image, recipes.id as recipe_id
+    db.query(` SELECT chefs.*, recipes.title as recipe_name, recipes.id as recipe_id
     FROM chefs
     LEFT JOIN recipes on (chefs.id = recipes.chef_id)
     where chefs.id = $1
