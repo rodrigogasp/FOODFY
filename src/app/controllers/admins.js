@@ -2,6 +2,7 @@
 
 const Admin = require("../models/admin")
 const File = require("../models/file")
+const RecipeFile = require("../models/recipeFile")
 const { selectChefOptions } = require("../models/admin")
 
 
@@ -89,9 +90,10 @@ module.exports = {
         const filespromise = req.files.map(file => File.create({...file}))
 
         
-        await Promise.all(filespromise)
+       const resultsFile = await (await Promise.all(filespromise)).map(file => file.rows[0].id)
 
-        
+
+       resultsFile.map(id => RecipeFile.create(recipeID, id))
 
         return res.redirect("/admin/recipes")
 
