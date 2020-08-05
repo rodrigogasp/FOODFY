@@ -18,6 +18,7 @@
     {%endblock menu%}
 
     {%block content%}
+
     <div class="container">
 
         <div id="chef">
@@ -37,11 +38,16 @@
 
             {%for item in recipes%}
             <div class="card" id="{{item.id}}">
+                <div class="cardfile">
 
                 <a href="/recipe/{{item.id}}">
-                <img src="{{item.image}}" alt="imagem de {{item.title}}">
-
+                {%for file in files%}
+                {%if item.id == file.recipe_id %}
+                <img src="{{file.src}}"alt="imagem de {{item.title}}">
+                {% endif %}
+                {%endfor%}
                 </a>
+                </div>
                 <h4>{{item.title}}</h4>
                 <p>por {{item.chef_name}}</p>
 

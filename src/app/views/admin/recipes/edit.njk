@@ -1,132 +1,129 @@
 {% extends "admin/layoutadmin.njk" %}
 
 {%block title%}
-<title>Editar Receita</title>
+    <title>Editar Receita</title>
 {%endblock title%}
 
-
-
 {%block content%}
-
-
 
     <div class="create">
 
         <h2>Criando Receita</h2>
         <div class="edit-buttons">
 
-        <button id="buttonDelete" type="submit" form="form-delete">Deletar Receita</button>
-        <button type="submit" form="form-edit">Salvar Receita</button>
+            <button id="buttonDelete" type="submit" form="form-delete">Deletar Receita</button>
+            <button type="submit" form="form-edit">Salvar Receita</button>
 
         </div>
 
     </div>
 
-<form action="/admin/recipes?_method=PUT" method="post" class="card" id="form-edit">
+    <form action="/admin/recipes?_method=PUT" method="post" class="card" id="form-edit">
 
-    <div class="item">
+        <div class="item">
 
-        <p>Nome</p>
-        <input type="text" name="title" value="{{items.title}}">
+            <p>Imagem da Receita</p>
+            <div class="photos-container">
 
+                <div class="photos-upload">
 
-    </div>
+                    <input id="photos-input" type="file" name="photos" multiple="multiple" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
+                    <i class="material-icons">add</i>
 
-      <div class="item">
+                </div>
 
-        <p>Autor</p>
-        <select name="chef_id">
-
-            {%for chef in options%}
-            <option value="{{chef.id}}">{{chef.name}}</option>
-            {%endfor%}
-
-        </select>
-
-
-    </div>
-
-
-    <div class="item">
-
-        <p>Imagem da Receita</p>
-        <input type="url" name="image" value="{{items.image}}">
-
-
-    </div>
-
-    <div id="addIngredient">
-
-        <p>Ingredientes</p>
-
-        {%for ingredient in items.ingredients%}
-        <div class="ingredient">
-            <input type="text" name="ingredients[]" value="{{ingredient}}">
+                <div id="photos-preview">
+                    {% if files %}
+                        {% for image in files %}
+                            <div class="photo" id="{{image.id}}">
+                                <img src="{{image.src}}" alt="{{image.name}}">
+                                <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+                            </div>
+                        {% endfor %}
+                        <input type="hidden" name="removed_files">
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        {%endfor%}
-    </div>
 
-    <div class="buttonadd">
+        <div class="item">
 
-        <button type="button" class="addIngredient">Adicionar novo ingrediente</button>
-
-    </div>
-
-    <div id="addPreparation">
-
-
-        <p>Modo de preparo</p>
-        {%for preparation in items.preparation %}
-        <div class="preparation">
-
-            <input type="text" name="preparation[]" value="{{preparation}}">
+            <p>Nome</p>
+            <input type="text" name="title" value="{{items.title}}">
 
         </div>
-        {%endfor%}
-    </div>
 
-    <div class="buttonadd">
+        <div class="item">
 
-        <button type="button" class="addPreparation">Adicionar novo passo</button>
+            <p>Autor</p>
+            <select name="chef_id">
 
-    </div>
+                {%for chef in options%}
+                    <option value="{{chef.id}}">{{chef.name}}</option>
+                    {%endfor%}
 
-    <div class="item">
+                </select>
 
-        <p>Informações adicionais</p>
-        <textarea name="information" cols="30" rows="10">{{items.information}}</textarea>
+            </div>
 
-    </div>
+            <div id="addIngredient">
 
-    <input type="hidden" name="id" value="{{items.id}}">
+                <p>Ingredientes</p>
 
-</form>
+                {%for ingredient in items.ingredients%}
+                    <div class="ingredient">
+                        <input type="text" name="ingredients[]" value="{{ingredient}}">
+                    </div>
+                    {%endfor%}
+                </div>
 
-<form action="/admin/recipes?_method=DELETE" method="post" id="form-delete">
+                <div class="buttonadd">
 
-<input type="hidden" name="id" value="{{items.id}}">
+                    <button type="button" class="addIngredient">Adicionar novo ingrediente</button>
 
+                </div>
 
-</form>
+                <div id="addPreparation">
 
-{% include "admin/recipes/confirm.njk"%}
+                    <p>Modo de preparo</p>
+                    {%for preparation in items.preparation %}
+                        <div class="preparation">
 
-{%endblock content%}
+                            <input type="text" name="preparation[]" value="{{preparation}}">
 
+                        </div>
+                        {%endfor%}
+                    </div>
 
-{%block scripts%}
+                    <div class="buttonadd">
 
-<script src="/scripts/admin-features.js"></script>
+                        <button type="button" class="addPreparation">Adicionar novo passo</button>
 
+                    </div>
 
- {%endblock scripts%}
+                    <div class="item">
 
+                        <p>Informações adicionais</p>
+                        <textarea name="information" cols="30" rows="10">{{items.information}}</textarea>
 
+                    </div>
 
+                    <input type="hidden" name="id" value="{{items.id}}">
 
+                </form>
 
+                <form action="/admin/recipes?_method=DELETE" method="post" id="form-delete">
 
+                    <input type="hidden" name="id" value="{{items.id}}">
 
+                </form>
 
+                {% include "admin/recipes/confirm.njk"%}
 
+            {%endblock content%}
 
+            {%block scripts%}
+
+                <script src="/scripts/admin-features.js"></script>
+
+            {%endblock scripts%}

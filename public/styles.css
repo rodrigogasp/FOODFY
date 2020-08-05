@@ -109,14 +109,27 @@ div.cards {
     grid-template-columns: 1fr 1fr 1fr;
     margin: 0 auto;
     gap: 20px;
+    width: 940px;
 }
 
-div.card img {
+div.cardfile {
+    position: relative;
+    height: 140px;
+    width: 300px;
+}
+
+div.cardfile img {
     height: 140px;
     width: 300px;
     border-radius: 15px;
     cursor: pointer;
+    position: absolute;
+    opacity: 0;
 
+}
+
+div.cardfile img:first-child {
+    opacity: 1;
 }
 
 .container h2 {

@@ -2,12 +2,14 @@
 
 
 const General = require("../models/general")
+const RecipeFile = require("../models/recipeFile")
 
 
 
 module.exports = {
 
-    home(req, res){
+    async home(req, res){
+
 
         let { filter, page, limit } = req.query
 
@@ -19,17 +21,27 @@ module.exports = {
             filter,
             page,
             limit,
-            offset,
-            callback(recipes) {
-  
-                const pagination = {
-                    total: Math.ceil(recipes[0].total / limit),
-                    page
-                }
-                return res.render('general/home', { recipes, pagination, filter })
-            }
+            offset
         }
-        General.paginate(params) 
+
+       let results = await General.paginate(params)
+       const recipes = results.rows
+
+
+        const pagination = {
+            total: Math.ceil(recipes[0].total / limit),
+            page
+        }
+
+        results = await RecipeFile.all()
+        const files = results.rows.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+        }))
+
+        
+        return res.render("general/home", {params, recipes, pagination, files})
+
     },
     about(req, res){
         return res.render("general/about")
@@ -42,6 +54,7 @@ module.exports = {
 
       //  })
 
+    
 
       let { filter, page, limit } = req.query
 

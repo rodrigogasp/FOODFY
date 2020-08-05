@@ -20,105 +20,94 @@
             <p>Imagem da Receita</p>
             <div class="photos-container">
 
-
                 <div class="photos-upload">
 
-                    <input  id="photos-input" 
-                            type="file" 
-                            name="photos" 
-                            multiple 
-                            accept="image/*"
-                            onchange="PhotosUpload.handleFileInput(event)">
+                    <input id="photos-input" type="file" name="photos" multiple="multiple" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
                     <i class="material-icons">add</i>
 
                 </div>
 
                 <div id="photos-preview">
-            {% if files %}
-                {% for image in files %}
-                    <div class="photo" id="{{image.id}}">
-                        <img src="{{image.src}}" alt="{{image.name}}">
-                        <i class="material-icons"
-                            onclick="PhotosUpload.removeOldPhoto(event)"
-                        >close</i>
-                    </div>
-                {% endfor %}
-                <input type="hidden" name="removed_files">
-            {% endif %}
+                    {% if files %}
+                        {% for image in files %}
+                            <div class="photo" id="{{image.id}}">
+                                <img src="{{image.src}}" alt="{{image.name}}">
+                                <i class="material-icons" onclick="PhotosUpload.removeOldPhoto(event)">close</i>
+                            </div>
+                        {% endfor %}
+                        <input type="hidden" name="removed_files">
+                    {% endif %}
+                </div>
+            </div>
         </div>
-    </div>
+
+
+<div class="item">
+
+    <p>Nome</p>
+    <input type="text" name="title">
+
 </div>
 
-            </div>
+<div class="item">
 
+    <p>Chef</p>
+    <select name="chef_id">
+
+        <option id="placeholder" value="" disabled="disabled" selected="selected">Selecione um chef</option>
+        {%for chef in items%}
+            <option value="{{chef.id}}">{{chef.name}}</option>
+            {%endfor%}
+
+        </select>
+
+    </div>
+
+    <div id="addIngredient">
+
+        <p>Ingredientes</p>
+
+        <div class="ingredient">
+            <input type="text" name="ingredients[]">
         </div>
 
-        <div class="item">
+    </div>
 
-            <p>Nome</p>
-            <input type="text" name="title">
+    <div class="buttonadd">
+
+        <button type="button" class="addIngredient">Adicionar novo ingrediente</button>
+
+    </div>
+
+    <div id="addPreparation">
+
+        <p>Modo de preparo</p>
+
+        <div class="preparation">
+
+            <input type="text" name="preparation[]">
 
         </div>
+    </div>
 
-        <div class="item">
+    <div class="buttonadd">
 
-            <p>Chef</p>
-            <select name="chef_id">
+        <button type="button" class="addPreparation">Adicionar novo passo</button>
 
-                <option id="placeholder" value="" disabled="disabled" selected="selected">Selecione um chef</option>
-                {%for chef in items%}
-                    <option value="{{chef.id}}">{{chef.name}}</option>
-                    {%endfor%}
+    </div>
 
-                </select>
+    <div class="item">
 
-            </div>
+        <p>Informações adicionais</p>
+        <textarea name="information" cols="30" rows="10"></textarea>
 
-            <div id="addIngredient">
+    </div>
 
-                <p>Ingredientes</p>
+</form>
 
-                <div class="ingredient">
-                    <input type="text" name="ingredients[]">
-                </div>
+{%endblock content%}
 
-            </div>
+{%block scripts%}
+<script src="/scripts/admin-features.js"></script>
 
-            <div class="buttonadd">
-
-                <button type="button" class="addIngredient">Adicionar novo ingrediente</button>
-
-            </div>
-
-            <div id="addPreparation">
-
-                <p>Modo de preparo</p>
-
-                <div class="preparation">
-
-                    <input type="text" name="preparation[]">
-
-                </div>
-            </div>
-
-            <div class="buttonadd">
-
-                <button type="button" class="addPreparation">Adicionar novo passo</button>
-
-            </div>
-
-            <div class="item">
-
-                <p>Informações adicionais</p>
-                <textarea name="information" cols="30" rows="10"></textarea>
-
-            </div>
-
-        </form>
-
-    {%endblock content%}
-
-    {%block scripts%}
-        <script src="/scripts/admin-features.js"></script>
-
-    {%endblock scripts%}
+{%endblock scripts%}

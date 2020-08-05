@@ -52,51 +52,34 @@ create(data) {
 
 
 },
-find(id, callback) {
+find(id) {
 
-    db.query(
+    return db.query(
     `
     SELECT *
     FROM recipes
-    WHERE id = $1`, [id], function(err, results){
-
-        if(err) throw `Database Error! ${err}`
-
-        callback(results.rows[0])
-
-    }
-
-
-    ) 
+    WHERE id = $1`, [id])
 
 },
+
 update(data, callback) {
 
-    const keys = Object.keys(data)
-
-    for(key of keys) {
-        if (data[key]== "") {
-
-            return res.send("Please, fill all fields!")
-        }
-    }
+  
  
     const query = `
     
     UPDATE recipes SET
         chef_id=($1),
-        image=($2),
-        title=($3),
-        ingredients=($4),
-        preparation=($5),
-        information=($6)
-        WHERE id = $7 
+        title=($2),
+        ingredients=($3),
+        preparation=($4),
+        information=($5)
+        WHERE id = $6
     `
  
     const values = [
 
         data.chef_id,
-        data.image,
         data.title,
         data.ingredients,
         data.preparation,
@@ -125,42 +108,26 @@ delete(id, callback) {
 
     })
 },
-selectChefOptions(callback) {
+selectChefOptions() {
 
-db.query(`
+return db.query(`
 
 select name, id from chefs
 
 
-`, function(err, results){
-
-if (err) throw `Database Error! ${err}`
-
-callback(results.rows)
-
-
-
-})
+`)
 
 
 
 },
-selectChefOption(callback) {
+selectChefOption(id) {
 
-    db.query(`
+    return db.query(`
     
-    select name, id from chefs
-    
-    
-    `, function(err, results){
-    
-    if (err) throw `Database Error! ${err}`
-    
-    callback(results.rows[0])
+    select name from chefs where id = $1
     
     
-    
-    })
+    `, [id])
     
     
     

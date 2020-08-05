@@ -28,8 +28,17 @@ const values = [
 return db.query(query, values)
 
 
-}
+},
+all() {
 
+
+return db.query(`
+select * from files
+left join recipe_files ON (recipe_files.file_id = files.id)
+ORDER BY file_id ASC
+`)
+
+},
 
 
 
