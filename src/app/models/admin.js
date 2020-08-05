@@ -64,7 +64,6 @@ find(id) {
 
 update(data, callback) {
 
-  
  
     const query = `
     
@@ -87,32 +86,22 @@ update(data, callback) {
         data.id
     ]
 
-    db.query(query, values, function(err, results){
-
-
-        if (err) throw `Database error! ${err}`
-
-        callback()
-    })
+    return db.query(query, values)
+    
 
 
 },
 delete(id, callback) {
 
 
-    db.query(`DELETE FROM recipes WHERE id=$1`, [id], function(err, results){
-
-        if(err) throw `Database Error! ${err}`
-
-        return callback()
-
-    })
+    return db.query(`DELETE FROM recipes WHERE id=$1`, [id])
 },
 selectChefOptions() {
 
 return db.query(`
 
-select name, id from chefs
+select name, id 
+from chefs
 
 
 `)

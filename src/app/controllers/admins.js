@@ -37,15 +37,16 @@ module.exports = {
 
        
     },
-create(req, res) {
+async create(req, res) {
 
-    Admin.selectChefOptions(function(items){
-
-
-        return res.render("admin/recipes/create", {items})
+    let results = await Admin.selectChefOptions()
+    const items = results.rows
 
 
-    })
+
+    return res.render("admin/recipes/create", {items})
+
+
 
     
 
@@ -57,9 +58,7 @@ create(req, res) {
     const items = results.rows[0]
     const recipeId = results.rows[0].id
 
-
     if (!items) return res.send("Recipe not found!")
-
 
     results = await Admin.selectChefOptions()
 
@@ -115,18 +114,25 @@ async put(req, res) {
     
 const keys = Object.keys(req.body)
 
+
 for(key of keys) {
 if (req.body[key] == "" && key != "removed_files") {
 return res.send('Please, fill all fields!')
 }
 }
 
+let results = await Admin.find(req.body.id) 
+const recipeID = results.rows[0].id
+
+
 
 if (req.files.length != 0) {
 const newFilesPromise = req.files.map(file => 
 File.create({...file}))
 
-await Promise.all(newFilesPromise)
+ const resultsFile = await (await Promise.all(newFilesPromise)).map(file => file.rows[0].id)
+
+ resultsFile.map(id => RecipeFile.create(recipeID, id))
 }
 
 if (req.body.removed_files) { 
@@ -134,7 +140,11 @@ const removedFiles = req.body.removed_files.split(",") // [1,2,3,]
 const lastIndex = removedFiles.length - 1
 removedFiles.splice(lastIndex, 1) // [1,2,3]
 
-const removedFilesPromise = removedFiles.map(id => File.delete(id)) 
+const removedFilePromise = removedFiles.map(id => RecipeFile.delete(id))
+
+await Promise.all(removedFilePromise)
+
+const removedFilesPromise = removedFiles.map(id => File.delete(id))  
 
 await Promise.all(removedFilesPromise)
 }
@@ -145,15 +155,17 @@ await Admin.update(req.body)
 return res.redirect(`/admin/recipes`)
 },
 
-delete(req,res) {
+async delete(req,res) {
 
-Admin.delete(req.body.id, function(){
-    return res.redirect("/admin/recipes")
+await RecipeFile.deleteAll(req.body.id)
 
-})
+await Admin.delete(req.body.id)
+
+const filespromise = req.files.map(file => File.delete(req.body.id))
+
+return res.redirect("/admin/recipes") 
 
 
 }
-
 
 }
