@@ -4,21 +4,15 @@ const db = require("../../config/db")
 
 module.exports = {
 
-all(callback) {
+all() {
 
-    db.query(
+   return db.query(
     `
     SELECT recipes.*, chefs.name AS chefs_name
     FROM recipes
     LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
     ORDER BY recipes.id ASC
-    `, function(err, results) {
-
-        if(err) throw `Database Error! ${err}`
-
-        callback(results.rows)
-
-    }) 
+    `) 
 
 },
 create(data) {

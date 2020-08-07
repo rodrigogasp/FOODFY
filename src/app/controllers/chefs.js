@@ -5,16 +5,12 @@ const Chef = require("../models/chef")
 module.exports = {
 
 
-index(req, res) {
+async index(req, res) {
 
-Chef.all(function(items){
+let results = await Chef.all()
+const items = results.rows
 
-
-    return res.render("admin/chefs/index", {items})
-
- 
-})
-
+return res.render("admin/chefs/index", {items})
 
 
 
@@ -26,14 +22,14 @@ return res.render("admin/chefs/create")
 
 
 },
-post(req, res){
+async post(req, res){
 
-Chef.create(req.body, function(items){
-
-    return res.redirect(`/admin/chefs`)
+let results = await Chef.create(req.body)
 
 
-})
+
+return res.redirect(`/admin/chefs`)
+
 
 
 

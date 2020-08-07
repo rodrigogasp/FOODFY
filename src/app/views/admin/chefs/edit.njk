@@ -1,17 +1,16 @@
 {%extends "admin/layoutadmin.njk"%}
 
-
 {%block content%}
-<form id="chef-delete" action="/admin/chefs?_method=DELETE" method="post">
+    <form id="chef-delete" action="/admin/chefs?_method=DELETE" method="post">
 
-<input type="hidden" name="id" value="{{chef.id}}">
-</form>
+        <input type="hidden" name="id" value="{{chef.id}}">
+    </form>
 
-<form action="/admin/chefs?_method=PUT" method="post" class="card" id="chef-edit">
+    <form action="/admin/chefs?_method=PUT" method="post" class="card" id="chef-edit">
 
-    <div class="formheader">
+        <div class="formheader">
 
-        <h2>Editando Chef</h2>
+            <h2>Editando Chef</h2>
 
             <div class="buttonschef">
 
@@ -20,19 +19,27 @@
 
             </div>
 
-    </div>
-{% include "admin/chefs/fields.njk" %}
+        </div>
+        <div class="create"></div>
 
-<input type="hidden" name="id" value="{{chef.id}}">
+        <div class="item">
 
+            <p>Nome</p>
+            <input type="text" name="name" value="{{chef.name}}">
 
+        </div>
 
+        <div class="item">
 
+            <p>Avatar</p>
+            <input type="url" name="image" value="{{chef.avatar_url}}">
 
+        </div>
 
-</form>
+        <input type="hidden" name="id" value="{{chef.id}}">
 
+    </form>
 
-{%include "admin/chefs/confirm.njk" %}
+    {%include "admin/chefs/confirm.njk" %}
 
 {%endblock content%}

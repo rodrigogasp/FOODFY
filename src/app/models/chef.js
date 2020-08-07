@@ -7,30 +7,20 @@ module.exports = {
 
 all(callback) {
 
-    db.query(
+    return db.query(
         `
         SELECT *
         FROM chefs
-        ORDER BY chefs.name ASC
+        ORDER BY chefs.name ASC 
         
         
-        `, function(err, results) {
-
-            if(err) throw `Database Error! ${err}`
-
-            callback(results.rows)
-
-        }
-
-
-
-    )
+        `)
 
 
 
 
 },
-create(data, callback) {
+create(data) {
 
     const keys = Object.keys(data)
 
@@ -63,14 +53,7 @@ create(data, callback) {
 
     ]
 
-    db.query(query, values, function(err, results){
-
-        if (err) throw `Database error! ${err}`
-
-        callback(results.rows[0])
-
-
-    })
+    return db.query(query, values)
 
 
 

@@ -1,23 +1,38 @@
 {%extends "admin/layoutadmin.njk"%}
 
-{%block title%} <title>Admin - Chefs</title> {%endblock title%}
+{%block title%}
+    <title>Admin - Chefs</title>
+{%endblock title%}
 
 {%block content%}
 
-<form id="create-chef" action="/admin/chefs" method="post" class="card">
+    <form id="create-chef" action="/admin/chefs" method="post" class="card" enctype="multipart/form-data">
 
-<div class="formheader">
+        <div class="formheader">
 
-<h2>Criando Chef</h2>
-    <button form="create-chef" type="submit">Salvar chef</button>
+            <h2>Criando Chef</h2>
+            <button form="create-chef" type="submit">Salvar chef</button>
 
-</div>
-{% include "admin/chefs/fields.njk" %}
+        </div>
 
+        <div class="item">
 
+            <p>Nome</p>
+            <input type="text" name="name" value="{{chef.name}}">
 
-</form>
+        </div>
 
+        <div class="item">
 
+            <p>Avatar</p>
+            <div class="chefFile">
+
+            <button type="button" id="sendChefFile">Enviar Avatar</button>
+            <input id="chefFile" type="file" name="file_id" value="{{file.id}}">
+            </div>
+
+        </div>
+
+    </form>
 
 {%endblock content%}

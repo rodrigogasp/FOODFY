@@ -39,6 +39,18 @@ ORDER BY file_id ASC
 `)
 
 },
+showSinglefile(id) {
+
+return db.query(`
+SELECT * from files
+LEFT JOIN recipe_files ON (recipe_files.file_id = files.id)
+WHERE recipe_files.recipe_id = $1
+ORDER BY files.id ASC
+`,[id])
+
+
+
+}, 
 delete(id) {
 
     return db.query (`

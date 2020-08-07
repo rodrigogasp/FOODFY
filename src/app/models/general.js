@@ -13,7 +13,7 @@ all(callback) {
         SELECT recipes.*, chefs.name AS chefs_name
         FROM recipes
         LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
-        ORDER BY recipes.id ASC
+        ORDER BY recipes.id DESC
         `, function(err, results) {
     
             if(err) throw `Database Error! ${err}`
@@ -25,9 +25,9 @@ all(callback) {
     
 
 },
-show(id, callback) {
+show(id) {
 
-db.query(
+return db.query(
 
     `
     SELECT recipes.*, chefs.name AS chefs_name
@@ -35,17 +35,9 @@ db.query(
     LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
     WHERE recipes.id = $1
     
-    `, [id], function(err, results) {
-        
-        if (err) throw `Database Error! ${err}`
+    `, [id])
         
         
-        callback(results.rows[0])
-        
-        
-    }
-    )
-
 
 },
 find(callback) {

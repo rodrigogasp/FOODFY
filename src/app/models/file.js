@@ -61,7 +61,7 @@ from files
 left join recipe_files on (recipe_files.file_id = files.id)
 where recipe_files.recipe_id = $1
 
-`, [id])
+`, [id]) 
 
 
 }
