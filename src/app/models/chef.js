@@ -20,7 +20,7 @@ all(callback) {
 
 
 },
-create(data) {
+create(data, id) {
 
     const keys = Object.keys(data)
 
@@ -37,7 +37,7 @@ create(data) {
     INSERT into chefs (
 
         name,
-        avatar_url
+        file_id
 
     ) VALUES ($1, $2)
     RETURNING id
@@ -48,7 +48,7 @@ create(data) {
     const values = [
 
         data.name,
-        data.image
+        id
 
 
     ]
@@ -58,67 +58,44 @@ create(data) {
 
 
 },
-showChef(id, callback) {
-    db.query(` SELECT chefs.*, recipes.title as recipe_name, recipes.id as recipe_id
+showChef(id) {
+    return db.query(` SELECT chefs.*, recipes.title as recipe_name, recipes.id as recipe_id
     FROM chefs
     LEFT JOIN recipes on (chefs.id = recipes.chef_id)
     where chefs.id = $1
-  `, [id], function(err, results) {
-        if (err) throw `
-                Database Error!$ { err }
-                `
-        callback(results.rows)
-    })
+  `, [id])
 },
-find(id, callback) {
-    db.query(`SELECT chefs.*, count(recipes) as total_recipes
+find(id) {
+    return db.query(`SELECT chefs.*, count(recipes) as total_recipes
     FROM chefs
     LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
     WHERE chefs.id = $1
-    group by chefs.id`, [id], function(err, results) { 
-        if (err) throw `Database Error! ${err}`
-        callback(results.rows[0])
-    })
+    group by chefs.id`, [id])
 },
-update(data, callback) {
+update(data, id) {
 
     const query = `
         
         UPDATE chefs SET 
-        name=($1),
-        avatar_url=($2)
+        name=($1), 
+        file_id=($2)
         WHERE id = $3
         `
         const values = [
 
             data.name,
-            data.image,
+            id,
             data.id
 
         ]
 
-        db.query(query, values, function(err, results){
-
-            if(err) throw `Database Error ${err}`
-
-
-           return callback()
-
-        })
+        return db.query(query, values)
 
 
 },
-delete(id, callback) {
+delete(id) {
 
-    db.query(`DELETE FROM chefs WHERE id=$1`, [id], function(err, results){
-
-
-        if(err) throw `Database Error ${err}`
-
-        callback()
-
-
-    })
+   return db.query(`DELETE FROM chefs WHERE id=$1`, [id])
 
 
 }

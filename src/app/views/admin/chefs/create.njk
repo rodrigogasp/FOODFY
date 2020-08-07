@@ -6,7 +6,7 @@
 
 {%block content%}
 
-    <form id="create-chef" action="/admin/chefs" method="post" class="card" enctype="multipart/form-data">
+    <form id="create-chef" action="/admin/chefs" method="post" class="card"  enctype="multipart/form-data" >
 
         <div class="formheader">
 
@@ -15,24 +15,9 @@
 
         </div>
 
-        <div class="item">
+    {%include "admin/chefs/fields.njk" %}
+        
 
-            <p>Nome</p>
-            <input type="text" name="name" value="{{chef.name}}">
-
-        </div>
-
-        <div class="item">
-
-            <p>Avatar</p>
-            <div class="chefFile">
-
-            <button type="button" id="sendChefFile">Enviar Avatar</button>
-            <input id="chefFile" type="file" name="file_id" value="{{file.id}}">
-            </div>
-
-        </div>
-
-    </form>
+</form>
 
 {%endblock content%}

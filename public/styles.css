@@ -691,6 +691,31 @@ button#sendChefFile{
 
 /* CHEF INDEX */
 
+#photos-preview .photo img.chefFormImg {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#photos-preview .photo i.chefFormIcon {
+    top: 10px;
+    left: 5px;
+}
+
+#photos-preview .photo img.chefFormImg1 {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#photos-preview .photo i.chefFormIcon1{
+    top: 10px;
+    left: 5px;
+}
+
+
 div.indexchef {
     width: 940px;
     margin: 0 auto;
@@ -902,7 +927,7 @@ div#photos-preview {
     position: relative;
 }
 
-#photos-preview .photo img {
+#photos-preview .photo img  {
 
     width: 150px;
     height: 150px;

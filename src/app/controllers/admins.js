@@ -88,7 +88,6 @@ async create(req, res) {
     }))
 
 
-
     return res.render("admin/recipes/edit", {items, options, files}) 
 
 },
@@ -135,6 +134,7 @@ if (req.body[key] == "" && key != "removed_files") {
 return res.send('Please, fill all fields!')
 }
 }
+
 
 let results = await Admin.find(req.body.id) 
 const recipeID = results.rows[0].id

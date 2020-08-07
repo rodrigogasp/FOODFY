@@ -6,7 +6,7 @@
         <input type="hidden" name="id" value="{{chef.id}}">
     </form>
 
-    <form action="/admin/chefs?_method=PUT" method="post" class="card" id="chef-edit">
+    <form action="/admin/chefs?_method=PUT" method="post" class="card" id="chef-edit" enctype="multipart/form-data">
 
         <div class="formheader">
 
@@ -22,19 +22,8 @@
         </div>
         <div class="create"></div>
 
-        <div class="item">
-
-            <p>Nome</p>
-            <input type="text" name="name" value="{{chef.name}}">
-
-        </div>
-
-        <div class="item">
-
-            <p>Avatar</p>
-            <input type="url" name="image" value="{{chef.avatar_url}}">
-
-        </div>
+    {%include "admin/chefs/fields.njk" %}
+       
 
         <input type="hidden" name="id" value="{{chef.id}}">
 

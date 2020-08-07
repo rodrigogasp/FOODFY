@@ -64,6 +64,16 @@ where recipe_files.recipe_id = $1
 `, [id]) 
 
 
+},
+getChefFile(id) {
+
+return db.query(`
+SELECT files.*, chefs.id as chefs_id
+FROM files
+LEFT JOIN chefs on (chefs.file_id = files.id)
+where chefs.id = $1
+`, [id])
+
 }
 
 
