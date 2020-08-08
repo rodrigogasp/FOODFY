@@ -542,6 +542,19 @@ div.cardIndex {
     display: flex;
 }
 
+div.cardIndex img:first-child {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #828282ad;
+    opacity: 1;
+}
+
+div.cardIndex img {
+    opacity: 0;
+}
+
 #file-image {
     width: 172px;
     height: 80px;
@@ -691,29 +704,19 @@ button#sendChefFile{
 
 /* CHEF INDEX */
 
-#photos-preview .photo img.chefFormImg {
+
+
+div.chefFormFile #photos-preview .photo i {
+    top: 10px;
+    left: -5px;
+}
+
+div.chefFormFile #photos-preview .photo img {
     width: 100px;
     height: 100px;
     margin-top: 20px;
-    margin-left: 20px;
 }
 
-#photos-preview .photo i.chefFormIcon {
-    top: 10px;
-    left: 5px;
-}
-
-#photos-preview .photo img.chefFormImg1 {
-    width: 100px;
-    height: 100px;
-    margin-top: 20px;
-    margin-left: 20px;
-}
-
-#photos-preview .photo i.chefFormIcon1{
-    top: 10px;
-    left: 5px;
-}
 
 
 div.indexchef {

@@ -67,6 +67,11 @@ deleteAll(id) {
 
 
 },
+getRecipeFile(id) {
+    return db.query(`
+    SELECT * FROM recipe_files WHERE recipe_files.recipe_id = $1
+    `,[id])
+}
 
 
 

@@ -1,7 +1,12 @@
 
 const Chef = require("../models/chef")
 const File = require("../models/file")
+const Admin = require("../models/admin")
+const RecipeFile = require("../models/recipeFile")
+
+
 const { getChefFile } = require("../models/file")
+const { getRecipeFile } = require("../models/recipeFile")
 
 
 
@@ -13,7 +18,15 @@ async index(req, res) {
 let results = await Chef.all()
 const items = results.rows
 
-return res.render("admin/chefs/index", {items})
+results = await File.getAllfiles()
+const allfiles = results.rows
+
+const files = results.rows.map(file => ({
+    ...file,
+    src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+}))
+
+return res.render("admin/chefs/index", {items, files})
 
 
 
@@ -58,15 +71,57 @@ async show(req, res){
 
   let results = await Chef.showChef(req.params.id)
   const items = results.rows[0]
-
-    if(!items) return res.send("Chef not found!")
+  const recipes = results.rows
+if(!items) return res.send("Chef not found!")
 
 
     results = await Chef.find(req.params.id)
     const chef = results.rows[0]
 
 
-        return res.render("admin/chefs/show", {items, chef})
+results = await Admin.getAllRecipes(req.params.id) 
+
+function getFilesId(results) {
+    let recipeid = []
+
+ for(result of results) {
+
+    id = result.id
+    recipeid.push(id)
+
+}
+
+return recipeid
+
+}
+
+
+const recipeid = getFilesId(results.rows)
+
+const getrecipeFile = recipeid.map(id => getRecipeFile(id))
+
+const recipeFile = await (await (await Promise.all(getrecipeFile)).map(file => file.rows[0]))
+
+const Filerecipe = recipeid.map(id => File.getFiles(id))
+
+const resultsFile = await (await Promise.all(Filerecipe)).map(file => file.rows[0].id)
+
+const getfiles = resultsFile.map(id => File.getFileById(id))
+const file = await(await Promise.all(getfiles)).map(file => file.rows[0])
+
+const files = file.map(file => ({
+    ...file,
+    src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+}))
+
+results = await File.getChefFile(req.params.id)
+const chefFile = results.rows.map(file => ({
+    ...file,
+    src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+}))
+console.log(chefFile)
+
+return res.render("admin/chefs/show", {items, chef, recipes, files, recipeFile, chefFile})
 
 
 },

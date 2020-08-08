@@ -114,6 +114,14 @@ selectChefOption(id) {
     
     
     
+    },
+    getAllRecipes(id) {
+        return db.query(`
+        SELECT recipes.id
+        FROM recipes
+        LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
+        WHERE chefs.id = $1
+        ORDER BY recipes.id ASC`, [id])
     }
 
 

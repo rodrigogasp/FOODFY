@@ -18,9 +18,11 @@
     <div class="cheflist">
         {%for item in items%}
         <div class="chefcard">
-
-           <img src="{{item.avatar_url}}" alt="">
-
+            {%for file in files%}
+            {%if item.file_id == file.id%}
+           <img src="{{file.src}}" alt="">
+            {%endif%}
+            {%endfor%}
             
            <div>
 

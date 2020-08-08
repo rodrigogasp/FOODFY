@@ -74,6 +74,19 @@ LEFT JOIN chefs on (chefs.file_id = files.id)
 where chefs.id = $1
 `, [id])
 
+},
+getAllfiles() {
+        return db.query(`
+        SELECT * FROM FILES
+        `)
+            
+},
+getFileById(id){
+
+return db.query(`
+SELECT * FROM files WHERE files.id = $1 
+`, [id])
+
 }
 
 
