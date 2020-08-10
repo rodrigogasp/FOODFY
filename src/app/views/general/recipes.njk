@@ -22,7 +22,7 @@
     {%block content%}
     <div class="searchFor">
 
-    <h2 >Buscando por : '{{filter}}'</h2>
+    <h2>Buscando por : '{{filter}}'</h2>
 
     </div>
     <div class="container">
@@ -31,7 +31,8 @@
 
             {%for item in recipes%}
             <div class="card" id="{{item.id}}">
-               
+                <div class="cardImage">
+
                 <a href="/recipe/{{item.id}}">
                  {%for file in files%}
                 {%if item.id == file.recipe_id%}
@@ -39,6 +40,7 @@
                 {%endif%}
                 {%endfor%}
                 </a>
+                </div>
                 <h4>{{item.title}}</h4>
                 <p>por {{item.chef_name}}</p>
 

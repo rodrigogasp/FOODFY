@@ -3,6 +3,8 @@
 
 const General = require("../models/general")
 const RecipeFile = require("../models/recipeFile")
+const File = require("../models/File")
+
 
 
 
@@ -40,7 +42,7 @@ module.exports = {
         }))
 
         
-        return res.render("general/home", {params, recipes, pagination, files})
+        return res.render("general/home", {params, filter, recipes, pagination, files})
 
     },
     about(req, res){
@@ -77,7 +79,7 @@ module.exports = {
         }))
 
         
-        return res.render("general/recipes", {params, recipes, pagination, files})  
+        return res.render("general/recipes", {params, filter, recipes, pagination, files})  
 
 
     },
@@ -99,20 +101,30 @@ module.exports = {
 
 
     },
-    chef(req, res){
+    async chef(req, res){
 
         
-    General.find(function(item){
+    let results = await General.find()
+    const item = results.rows
 
-        if(!item) return res.send("chef not found")
+    if(!item) return res.send("chef not found")
 
-        return res.render("general/chefs", {item})
+    results = await File.getAllfiles()
+    const allfiles = results.rows
+
+    const files = results.rows.map(file => ({
+    ...file,
+    src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+    }))
+    console.log(files)
+
+    return res.render("general/chefs", {item, files})
 
 
-    })
+    
 
 
-    }
 
     
 }  
+}

@@ -59,7 +59,7 @@
             <select name="chef_id">
 
                 {%for chef in options%}
-                    <option value="{{chef.id}}">{{chef.name}}</option>
+                    <option value="{{chef.id}}" {%if chef.id == items.chef_id%} selected {%endif%}>{{chef.name}}</option>
                     {%endfor%}
 
                 </select>

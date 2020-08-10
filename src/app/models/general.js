@@ -40,14 +40,11 @@ return db.query(
         
 
 },
-find(callback) {
-    db.query(`SELECT chefs.*, count(recipes) as total_recipes
+find() {
+   return db.query(`SELECT chefs.*, count(recipes) as total_recipes
     FROM chefs
     LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
-    GROUP BY chefs.id`, function(err, results) { 
-        if (err) throw `Database Error! ${err}`
-        callback(results.rows)
-    })
+    GROUP BY chefs.id`)
 
 },
 paginate(params) {

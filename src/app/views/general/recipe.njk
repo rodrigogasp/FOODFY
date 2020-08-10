@@ -1,83 +1,105 @@
 {%extends "general/layout.njk"%}
 
 {%block title%}
-<title>Receita - {{item.title}}</title>
+    <title>Receita -
+        {{item.title}}</title>
 
 {%endblock title%}
 
 {%block content%}
     <section class="recipe">
 
-        <div class=image>
+        <div class="gallery">
+            <div class="highlight">
 
-            <img src="{{files[0].src}}" alt="">
+                {%if not files[0] %}
+                    <img src="http://placehold.it/500x500?text=PRODUTO SEM FOTO" alt="">
+                    {%else%}
+                    <img src="{{files[0].src}}" alt="{{files[0].name}}" onclick="Lightbox.open()">
+                    {%endif%}
 
-        </div>
+                    <div class="lightbox-target">
+                        <img src="{{files[0].src}}" alt="{{files[0].name}}">
+                        <a href="#" class="lightbox-close" onclick="Lightbox.close()">
+                            <i class="material-icons">close</i>
+                        </a>
+                    </div>
 
-        <div class="title">
+                    <div class="gallery-preview">
 
-            <h1>{{item.title}}</h1>
-            <p> por {{item.chefs_name}}</p>
-        </div>
+                        {%for image in files%}
+                            <img src="{{image.src}}" alt="{{image.name}}" {%if loop.index0 == 0 %} class="active" {%endif%} onclick="ImageGallery.setImage(event)">
 
-        <div class="recipe-description">
+                            {%endfor%}
 
-            <div class="span">
-            
-                <h2>Ingredientes</h2>
+                        </div>
 
-                <span>Esconder</span>
-
-            </div>
-
-                <ul class="content">
-
-                    {%for ingredients in item.ingredients%}
-                    <li>{{ingredients}}</li>
-                    {%endfor%}
-
-                </ul>
-        </div>
-            
-
-        <div class="recipe-description">
-                
-                <div class="span">
-
-                    <h2>Modo de Preparo</h2>
-                    <span>Esconder</span>
+                    </div>
 
                 </div>
 
-            <ul class="content">
-                {%for preparation in item.preparation%}
-                <li>{{preparation}}</li>
-                {%endfor%}
-            </ul>
+                <div class="title">
 
-        </div>
+                    <h1>{{item.title}}</h1>
+                    <p>
+                        por
+                        {{item.chefs_name}}</p>
+                </div>
 
+                <div class="recipe-description">
 
-        <div class="recipe-description">
-                
                     <div class="span">
 
-                        <h2>Informações</h2>
-
+                        <h2>Ingredientes</h2>
 
                         <span>Esconder</span>
 
                     </div>
 
-            <div class="content">
+                    <ul class="content">
 
-                <p id="information">{{item.information}}</p>
+                        {%for ingredients in item.ingredients%}
+                            <li>{{ingredients}}</li>
+                            {%endfor%}
 
-            </div>
+                        </ul>
+                    </div>
 
-        </div>
+                    <div class="recipe-description">
 
+                        <div class="span">
 
-    </section>
+                            <h2>Modo de Preparo</h2>
+                            <span>Esconder</span>
 
-{%endblock content%}
+                        </div>
+
+                        <ul class="content">
+                            {%for preparation in item.preparation%}
+                                <li>{{preparation}}</li>
+                                {%endfor%}
+                            </ul>
+
+                        </div>
+
+                        <div class="recipe-description">
+
+                            <div class="span">
+
+                                <h2>Informações</h2>
+
+                                <span>Esconder</span>
+
+                            </div>
+
+                            <div class="content">
+
+                                <p id="information">{{item.information}}</p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+                {%endblock content%}
+                

@@ -95,7 +95,6 @@ return recipeid
 
 }
 
-
 const recipeid = getFilesId(results.rows)
 
 const getrecipeFile = recipeid.map(id => getRecipeFile(id))
@@ -119,7 +118,6 @@ const chefFile = results.rows.map(file => ({
     ...file,
     src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
 }))
-console.log(chefFile)
 
 return res.render("admin/chefs/show", {items, chef, recipes, files, recipeFile, chefFile})
 
