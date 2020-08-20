@@ -26,7 +26,7 @@ module.exports = {
             offset
         }
 
-       let results = await General.paginate(params)
+       let results = await General.paginateHome(params)
        const recipes = results.rows
 
 
@@ -63,7 +63,7 @@ module.exports = {
             offset
         }
 
-       let results = await General.paginate(params)
+       let results = await General.paginateRecipes(params)
        const recipes = results.rows
 
 

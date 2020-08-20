@@ -161,15 +161,22 @@ async put(req, res) {
     if(req.files.length == 0 && req.body.removed_files) {
         return res.send('Please send at least one image')
     }
+
      
       if (req.files.length != 0) {
         let results = await File.create(...req.files)
         const Fileid = results.rows[0].id
-        await Chef.update(req.body, Fileid)  
+        await Chef.updateImage(req.body, Fileid)  
     }
 
-    
+        if(req.files.length == 0) {
 
+            await Chef.update(req.body)
+
+        }
+
+
+    
 
         if (req.body.removed_files) { 
             const removedFiles = req.body.removed_files.split(",") // [1,2,3,] 

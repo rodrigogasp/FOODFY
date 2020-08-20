@@ -138,7 +138,7 @@ module.exports = {
         let results = await Admin.find(req.body.id)
         const recipeID = results.rows[0].id
 
-
+        console.log(req.files.length)
 
         if (req.files.length != 0) {
             const newFilesPromise = req.files.map(file =>

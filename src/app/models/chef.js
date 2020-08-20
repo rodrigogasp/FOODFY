@@ -72,7 +72,7 @@ find(id) {
     WHERE chefs.id = $1
     group by chefs.id`, [id])
 },
-update(data, id) {
+updateImage(data, id) {
 
     const query = `
         
@@ -85,6 +85,25 @@ update(data, id) {
 
             data.name,
             id,
+            data.id
+
+        ]
+
+        return db.query(query, values)
+
+
+},
+update(data) {
+
+    const query = `
+        
+        UPDATE chefs SET 
+        name=($1) 
+        WHERE id = $2
+        `
+        const values = [
+
+            data.name,
             data.id
 
         ]
