@@ -79,7 +79,7 @@ paginateHome(params) {
 
     return db.query(query, [limit, offset])
 },
-paginateRecipes(params) {
+async paginateRecipes(params) {
     const { filter, limit, offset} = params
 
     let query = "",
@@ -108,6 +108,7 @@ paginateRecipes(params) {
         ORDER BY recipes.updated_at DESC
         LIMIT $1 OFFSET $2
     `
+  
 
     return db.query(query, [limit, offset])
 }

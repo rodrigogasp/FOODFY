@@ -66,14 +66,15 @@ module.exports = {
        let results = await General.paginateRecipes(params)
        const recipes = results.rows
 
+        if(filter && recipes.length == 0) return res.send('Recipe not found')
 
         const pagination = {
-            total: Math.ceil(recipes[0].total / limit),
+            total: Math.ceil(recipes[0].total / limit), 
             page
         }
 
         results = await RecipeFile.all()
-        const files = results.rows.map(file => ({
+        const files = results.rows.map(file => ({ 
             ...file,
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
