@@ -63,10 +63,11 @@ module.exports = {
             offset
         }
 
-       let results = await General.paginateRecipes(params)
+       let results = await General.paginateRecipes(params) 
        const recipes = results.rows
 
         if(filter && recipes.length == 0) return res.send('Recipe not found')
+          
 
         const pagination = {
             total: Math.ceil(recipes[0].total / limit), 
