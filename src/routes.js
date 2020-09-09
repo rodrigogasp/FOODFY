@@ -7,6 +7,7 @@ const admin = require("./app/controllers/admins")
 const chef = require("./app/controllers/chefs")
 const UserController = require("./app/controllers/UserController")
 
+const userValidator = require('./app/validators/user')
 
 
 
@@ -48,7 +49,7 @@ routes.delete("/admin/chefs", chef.delete)
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/admin/users', UserController.list) //Mostrar a lista de usuários cadastrados
 routes.get('/admin/users/create', UserController.create) //Criar um usuário
-//routes.post('/admin/users', UserController.post) //Cadastrar um usuário
+routes.post('/admin/users', userValidator.post, UserController.post) //Cadastrar um usuário
 //routes.put('/admin/users', UserController.put) // Editar um usuário
 //routes.delete('/admin/users', UserController.delete) // Deletar um usuário
 
