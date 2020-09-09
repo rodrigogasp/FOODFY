@@ -1093,3 +1093,58 @@ cursor: zoom-in;
     transition: 400ms;
 
 }
+
+/* USERS FORM */
+div.title {
+    margin: 0 auto;
+    width: 940px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 36px;
+}
+
+div.title .titlebuttons {
+    display: flex;
+}
+
+div.title .titlebuttons button {
+    width: 120px;
+}
+
+div.title .titlebuttons button:last-child {
+    margin-left: 16px;
+    background-color: #8A8A8A;
+}
+
+div.fields {
+    margin: 0 auto;
+    width: 940px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+}
+
+div.fields .userField input.userFieldInput {
+    width: 100%;
+    height: 30px;
+    padding: 5px 10px;
+}
+
+
+div.isadmin {
+    width: 940px;
+    margin: 0 auto;
+}
+
+#isadmin {
+width: 20px;
+height: auto;
+margin: 36px auto 0 auto ;
+padding: 0;
+}
+
+div.isadmin label {
+    font-weight: bold;
+    font-size: 14px;
+}

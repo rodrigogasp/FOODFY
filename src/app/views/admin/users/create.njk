@@ -1,0 +1,21 @@
+{%extends "admin/layoutadmin.njk"%}
+
+{%block content%}
+    <div class="createUser">
+
+        <form id="create-user" action="/admin/users" method="post" class="card">
+
+        <div class="title">
+            <h2>Criando Usuário</h2>
+            <div class="titlebuttons">
+                <button type="submit">Salvar</button>
+                <button type="submit">Cancelar</button>
+            </div>
+        </div>
+        
+        {%include 'admin/users/fields.njk'%}
+
+        </form>
+    </div>
+
+{%endblock content%}
