@@ -118,7 +118,6 @@ module.exports = {
     ...file,
     src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
     }))
-    console.log(files)
 
     return res.render("general/chefs", {item, files})
 

@@ -1,0 +1,29 @@
+{%extends 'admin/session/layoutsession.njk'%}
+
+{%block title%}
+    <title>Foodfy - Login</title>
+{%endblock title%}
+
+{%block content%}
+
+    <form method="POST" action="/admin/login" class="login" id="loginForm">
+
+        <h2>Iniciar Sessão</h2>
+
+        <p>Email</p>
+        <input type="text" placeholder="Digite seu email">
+
+        <p>Senha</p>
+        <input type="password" placeholder="Digite sua senha">
+
+        <div class="loginFormButtons">
+
+            <a href="http://">Perdeu a senha?</a>
+
+            <button type="submit" form="loginForm">Acessar</button>
+
+        </div>
+
+    </form>
+
+{%endblock content%}

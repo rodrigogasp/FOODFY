@@ -439,6 +439,19 @@ p#information {
 
 }
 
+.menuadmin.login {
+    background-color:white;
+    width: 100%;
+    padding: 25px;
+    margin: 0 auto;
+    width: 940px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+}
+
+
 div#logo {
     max-width: 940px;
     margin: 0 auto;
@@ -1193,4 +1206,47 @@ padding: 0;
 div.isadmin label {
     font-weight: bold;
     font-size: 14px;
+}
+
+/* LOGIN FORM */
+
+#loginForm {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+#loginForm input {
+    width: 100%;
+    height: 49px;
+    padding-left: 10px;
+}
+
+#loginForm p {
+    font-size: 16px;
+    margin: 35px 0 0 0 ;
+    max-width: unset;
+}
+
+#loginForm h2 {
+    text-align: center;
+    font-size: 24px;
+}
+
+#loginForm div.loginFormButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+#loginForm div.loginFormButtons a {
+    margin: 0;
+    color: #969696;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+#loginForm div.loginFormButtons button {
+    width: 134px;
 }
