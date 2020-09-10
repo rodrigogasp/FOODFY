@@ -1,15 +1,20 @@
 module.exports = {
     post(req, res, next) {
 
-        const keys = Object.keys(req.body)
+        const body = req.body
+
+        const keys = Object.keys(body)
 
         for (key of keys) {
-            if (req.body[key] == "") {
+            if (body[key] == "") {
                 return res.render('admin/users/create', {
-                   error: "Por favor preencha todos os campos"
+                   error: "Por favor preencha todos os campos",
+                   user: body
                 })
             }
         }
+
+        next()
 
     }
 } 

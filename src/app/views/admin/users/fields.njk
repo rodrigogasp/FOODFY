@@ -1,24 +1,21 @@
 <div class="fields">
 
     <div class="userField">
-
         <p>Nome</p>
-        <input class="userFieldInput" type="text" name="title" value="{{user.name}}" placeholder="Digite o nome completo">
+        <input class="userFieldInput" type="text" name="name" value="{{user.name}}" placeholder="Digite o nome completo">
 
     </div>
 
     <div class="userField">
 
         <p>Email</p>
-        <input class="userFieldInput type=" text" name=" title" value="{{user.email}}" placeholder="Digite seu email">
+        <input class="userFieldInput type=" text" name="email" value="{{user.email}} " placeholder="Digite seu email"  onblur="Validate.apply(this, 'isEmail')">
 
     </div>
 
 </div>
 
 <div class="isadmin">
-    <input type="checkbox" name="isadmin" id="isadmin">
+    <input type="checkbox" name="isadmin" id="isadmin" onclick="isadmins(this)" value="">
     <label for="isadmin">Administrador</label>
-</div>
-
 </div>
