@@ -5,13 +5,14 @@ module.exports = {
         return res.render('admin/users/list')
     },
     async create(req, res) {
+       
         return res.render('admin/users/create')
     },
     async post(req, res) {
 
         let results = await User.create(req.body)
 
-        return res.redirect('admin/users')
+        return res.redirect('users')
 
     }
 }

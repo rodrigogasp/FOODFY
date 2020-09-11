@@ -451,6 +451,13 @@ p#information {
 
 }
 
+.menuadmin #logout {
+    background: none;
+    position: absolute;
+    right: 100px;
+    top: 20px;
+}
+
 
 div#logo {
     max-width: 940px;

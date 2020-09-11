@@ -22,7 +22,7 @@ routes.get("/chefs", generals.chef)
 
 
 //route admin recipes
-routes.get("/admin", function(req,res){return res.redirect("/admin/recipes")})
+routes.get("/admin", function(req,res){return res.redirect("/admin/login")})
 routes.get("/admin/recipes/create", admin.create)
 routes.get("/admin/recipes", admin.index)
 routes.get("/admin/recipes/:id", admin.show)

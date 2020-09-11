@@ -1,5 +1,7 @@
+const User = require('../models/UserModel')
+
 module.exports = {
-    post(req, res, next) {
+    async post(req, res, next) {
 
         const body = req.body
 
@@ -13,6 +15,15 @@ module.exports = {
                 })
             }
         }
+
+        const emailExists = await User.findByEmail(body.email)
+
+        if(emailExists) return res.render('admin/users/create', {
+            error: "Já existe uma conta vinculada a este e-mail",
+            user: body
+        })
+
+
 
         next()
 

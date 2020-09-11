@@ -6,12 +6,14 @@ const SessionController = require("../app/controllers/SessionController")
 
 
 const userValidator = require('../app/validators/user')
+const SessionValidator = require('../app/validators/session')
+
 
 //Rotas de perfil para logar
 
 routes.get('/login', SessionController.loginPage)
-routes.post('/login', SessionController.login)
-//routes.post('/login', SessionController.logout)
+routes.post('/login', SessionValidator.login, SessionController.login)
+routes.post('/logout', SessionController.logout)
 
 
 // Rotas de perfil de um usuário logado

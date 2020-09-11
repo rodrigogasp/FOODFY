@@ -417,9 +417,8 @@ const ImageGallery = {
     }
 
     function isadmins(input) {
+
         if(input.checked) {
             input.value = true
-        } else {
-            input.value = false
-        }
+        }         
     }
