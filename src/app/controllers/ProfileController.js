@@ -7,5 +7,11 @@ module.exports = {
 
 
         return res.render('admin/profile/index', {user})
-    }
+    },
+    async put(req, res) {
+
+        return res.send('passou')
+
+    },
+    
 }

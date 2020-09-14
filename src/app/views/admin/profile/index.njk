@@ -1,14 +1,14 @@
 {%extends "admin/layoutadmin.njk"%}
 
 {%block content%}
-    <div class="createUser">
+    <div class="createUser edit">
 
-        <form id="create-user" action="/admin/users" method="post" class="card">
+        <form id="edit-user" action="/admin/profile?_method=PUT" method="post" class="card">
 
         <div class="title">
             <h2>Bem vindo, {{user.name}}</h2>
-            <div class="titlebuttons">
-                <button type="submit">Atualizar</button>
+            <div>
+                <button form="edit-user" type="submit">Atualizar</button>
             </div>
         </div>
 
