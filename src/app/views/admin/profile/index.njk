@@ -1,0 +1,20 @@
+{%extends "admin/layoutadmin.njk"%}
+
+{%block content%}
+    <div class="createUser">
+
+        <form id="create-user" action="/admin/users" method="post" class="card">
+
+        <div class="title">
+            <h2>Bem vindo, {{user.name}}</h2>
+            <div class="titlebuttons">
+                <button type="submit">Atualizar</button>
+            </div>
+        </div>
+
+        {%include 'admin/profile/fields.njk'%}
+
+        </form>
+    </div>
+
+{%endblock content%}

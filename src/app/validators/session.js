@@ -24,5 +24,14 @@ module.exports = {
         req.user = user
 
         next()
+    },
+    isLogged(req, res, next) {
+        if(!req.session.userId) return res.render('admin/session/login', {
+            error: 'Você precisa estar logado para acessar esta página'
+        })
+
+        if(req.session.userId) {
+            next()
+        }
     }
 }

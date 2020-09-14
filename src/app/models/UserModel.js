@@ -53,7 +53,20 @@ module.exports = {
     async findByEmail(email) {
         try {
 
-            let results =  await db.query('SELECT * FROM users WHERE email = $1', [email])
+
+            let results =  await db.query('SELECT * FROM users WHERE lower(email) = lower($1)', [email])
+
+
+            return results.rows[0]
+
+        } catch(err) {
+            console.error(err)
+        }
+    },
+    async findById(id) {
+        try{
+
+            let results = await db.query('SELECT * FROM users WHERE id = $1', [id])    
 
             return results.rows[0]
 
