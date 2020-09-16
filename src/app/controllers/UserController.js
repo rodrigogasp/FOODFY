@@ -2,7 +2,10 @@ const User = require('../models/UserModel')
 
 module.exports = {
     async list(req, res) {
-        return res.render('admin/users/list')
+
+        const users = await User.showAll()
+
+        return res.render('admin/users/list', {users})
     },
     async create(req, res) {
        

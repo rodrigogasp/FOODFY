@@ -33,5 +33,17 @@ module.exports = {
         if(req.session.userId) {
             next()
         }
+    },
+    async isAdmin(req, res, next) {
+        let user = await User.findById(req.session.userId)
+
+        if(user.is_admin != true) {
+
+        req.session.error = 'Você não tem permissão para acessar esta página'
+
+        return res.redirect('profile')
+        }
+
+        next()
     }
 }

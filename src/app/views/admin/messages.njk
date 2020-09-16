@@ -10,3 +10,10 @@
     {{success}}
 </div>
 {%endif%}
+
+{%if req.session.error%}
+<div class="messages error">
+    {{req.session.error}}
+</div>
+{%endif%}
+

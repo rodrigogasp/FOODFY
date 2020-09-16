@@ -23,8 +23,8 @@ routes.get('/profile', ProfileController.index) // Mostrar o formulário com dad
 routes.put('/profile', userValidator.put, ProfileController.put)// Editar o usuário logado
 
 // Rotas que o administrador irá acessar para gerenciar usuários
-routes.get('/users', SessionValidator.isLogged, UserController.list) //Mostrar a lista de usuários cadastrados
-routes.get('/users/create', UserController.create) //Criar um usuário
+routes.get('/users', SessionValidator.isLogged, SessionValidator.isAdmin, UserController.list) //Mostrar a lista de usuários cadastrados
+routes.get('/users/create', SessionValidator.isLogged, SessionValidator.isAdmin, UserController.create) //Criar um usuário
 routes.post('/users', userValidator.post, UserController.post) //Cadastrar um usuário
 //routes.put('/users', UserController.put) // Editar um usuário
 //routes.delete('/users', UserController.delete) // Deletar um usuário

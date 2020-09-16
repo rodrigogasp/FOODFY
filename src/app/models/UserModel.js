@@ -50,6 +50,12 @@ module.exports = {
             
     
     },
+    async showAll() {
+        let results = await db.query('SELECT * FROM users')
+
+        return results.rows
+
+    },
     async findByEmail(email) {
         try {
 
@@ -73,5 +79,31 @@ module.exports = {
         } catch(err) {
             console.error(err)
         }
+    },
+    async update(id, data) {
+        try{
+
+            const query = `
+        
+            UPDATE users SET
+            name=($1),
+            email=($2)
+            WHERE id = $3
+        
+        `
+
+        const values = [
+            data.name,
+            data.email,
+            id
+        ]
+
+        return db.query(query, values)
+
+
+        } catch(err) {
+            console.error(err)
+        }
+
     }
 }
