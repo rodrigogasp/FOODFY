@@ -7,6 +7,8 @@ module.exports = {
 
         error = req.session.error
 
+        req.session.error = ""
+
         return res.render('admin/profile/index', {user, error})
     },
     async put(req, res) {
