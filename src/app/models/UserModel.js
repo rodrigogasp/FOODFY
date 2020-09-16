@@ -37,7 +37,7 @@ module.exports = {
             data.name,
             data.email,
             passwordHash,
-            data.isadmin
+            data.isadmin || false
         ]
     
         const results = await db.query(query, values)
@@ -105,5 +105,37 @@ module.exports = {
             console.error(err)
         }
 
+    },
+    async updatedByAdmin(data) {
+
+        try{
+
+            const query = `
+        
+            UPDATE users SET
+            name=($1),
+            email=($2),
+            is_admin=($3)
+            WHERE id = $4
+        
+        `
+
+        const values = [
+            data.name,
+            data.email,
+            data.isadmin || false,
+            data.id
+        ]
+
+        return db.query(query, values)
+
+
+        } catch(err) {
+            console.error(err)
+        }
+
+    },
+    async delete(id) {
+        return db.query('DELETE from USERS WHERE id=$1', [id])
     }
 }

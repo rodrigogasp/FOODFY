@@ -106,7 +106,7 @@ module.exports = {
             return res.send('Please, send at least one image')
 
 
-        let results = await Admin.create(req.body)
+        let results = await Admin.create(req.body, req.session.userId)
         const recipeID = results.rows[0].id
 
 

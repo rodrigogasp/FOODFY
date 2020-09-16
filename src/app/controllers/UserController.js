@@ -17,5 +17,27 @@ module.exports = {
 
         return res.redirect('users')
 
+    },
+    async edit(req, res) {
+
+        const userid = req.params.id
+
+        let user = await User.findById(userid)
+
+        return res.render('admin/users/edit', {user}) 
+    },
+    async put(req, res) {
+
+        console.log(req.body)
+
+        await User.updatedByAdmin(req.body)
+
+        return res.redirect('users')
+    },
+    async delete(req, res) {
+
+        await User.delete(req.body.id)
+
+        return res.redirect('users')
     }
 }

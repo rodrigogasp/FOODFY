@@ -15,7 +15,7 @@ all() {
     `) 
 
 },
-create(data) {
+create(data, userId) {
 
     
     const query = `
@@ -26,8 +26,9 @@ create(data) {
         title,
         ingredients,
         preparation,
-        information
-    ) VALUES ($1, $2, $3, $4, $5)
+        information,
+        user_id
+    ) VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING id
     
     `
@@ -37,7 +38,8 @@ create(data) {
         data.title,
         data.ingredients,
         data.preparation,
-        data.information
+        data.information,
+        userId
     
     ]
 

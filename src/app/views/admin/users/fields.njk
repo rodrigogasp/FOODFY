@@ -9,7 +9,7 @@
     <div class="userField">
 
         <p>Email</p>
-        <input class="userFieldInput type=" text" name="email" value="{{user.email}} " placeholder="Digite seu email"  onblur="Validate.apply(this, 'isEmail')">
+        <input class="userFieldInput" type="text" name="email" value="{{user.email}}" placeholder="Digite seu email"  onblur="Validate.apply(this, 'isEmail')">
 
     </div>
 
@@ -17,6 +17,8 @@
 
 
 <div class="isadmin">
-    <input type="checkbox" name="isadmin" id="isadmin" onclick="isadmins(this)">
+    <input {%if user.is_admin == true %} checked {%endif%} type="checkbox" name="isadmin" id="isadmin" onclick="isadmins(this)">
     <label for="isadmin">Administrador</label>
 </div>
+
+
