@@ -135,6 +135,32 @@ module.exports = {
         }
 
     },
+    async updatePassword(id, password) {
+        try{
+
+            const query = `
+        
+            UPDATE users SET
+            password=($1)
+            WHERE id = $2
+        
+        `
+
+        const passwordHash = await hash(password, 8)
+
+        const values = [
+            passwordHash,
+            id
+        ]
+
+        return db.query(query, values)
+
+
+        } catch(err) {
+            console.error(err)
+        }
+
+    },
     async delete(id) {
         return db.query('DELETE from USERS WHERE id=$1', [id])
     }

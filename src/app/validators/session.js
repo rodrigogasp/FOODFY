@@ -1,4 +1,6 @@
 const User = require('../models/UserModel')
+const Recipe = require('../models/admin')
+
 
 const {compare} = require("bcryptjs")
 
@@ -41,9 +43,31 @@ module.exports = {
 
         req.session.error = 'Você não tem permissão para acessar esta página'
 
-        return res.redirect('profile')
+        return res.redirect('back')
         }
 
         next()
+    },
+    async isAdminRecipe(req, res, next) {
+
+        let user = await User.findById(req.session.userId)
+
+        if(user.is_admin != true) {
+            
+            let results = await Recipe.find(req.params.id)
+            
+            const RecipeUserId = results.rows[0].user_id
+            
+            if(RecipeUserId != user.id) {
+                req.session.error = 'Você não pode alterar receitas de outros usuários'
+                return res.redirect('back')
+            }
+        }
+
+        next()
+
+        
+
+
     }
 }

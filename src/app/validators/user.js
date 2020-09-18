@@ -1,5 +1,6 @@
+const {compare, hash} = require('bcryptjs')
+
 const User = require('../models/UserModel')
-const {compare} = require('bcryptjs')
 
 module.exports = {
     async post(req, res, next) {
@@ -45,7 +46,7 @@ module.exports = {
             }
         }
 
-        const user = await User.findById(req.session.userId)
+        let user = await User.findById(req.session.userId)
 
         const passed = await compare(password, user.password)
 
@@ -74,6 +75,42 @@ module.exports = {
 
         next()
 
+
+    },
+    async updatePassword(req, res, next) {
+        const body = req.body
+        const id = req.session.userId
+
+        const {OldPassword, NewPassword, RepeatPassword} = req.body
+
+        const keys = Object.keys(body)
+
+
+        for (key of keys) {
+            if (body[key] == "") {
+                return res.render('admin/profile/passwordChange', {
+                   error: "Por favor preencha todos os campos",
+                   user: body
+                })
+            }
+        }
+
+        let user = await User.findById(id)
+
+        const passed = await compare(OldPassword, user.password) 
+
+        if(!passed) return res.render('admin/profile/passwordChange', {
+            error: 'Senha incorreta',
+            user
+        })
+
+        if(NewPassword != RepeatPassword) return res.render('admin/profile/passwordChange', {
+            error: 'As senhas escolhidas não são iguais. Por favor, tente novamente',
+            user
+        })
+
+
+        next()
 
     },
     async delete(req, res, next) {

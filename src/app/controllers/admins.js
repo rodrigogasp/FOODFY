@@ -10,7 +10,7 @@ const file = require("../models/file")
 module.exports = {
 
     async index(req, res) {
-
+        const SessionId = req.session.userId
 
         let results = await Admin.all()
         const items = results.rows
@@ -21,7 +21,7 @@ module.exports = {
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
 
-        return res.render("admin/recipes/index", { items, files })
+        return res.render("admin/recipes/index", { items, files, SessionId })
 
     },
     async show(req, res) {
@@ -47,7 +47,11 @@ module.exports = {
             src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
         }))
 
-        return res.render(`admin/recipes/show`, { items, options, files })
+        error = req.session.error 
+
+        req.session.error = ""
+
+        return res.render(`admin/recipes/show`, { items, options, files, error })
 
 
     },

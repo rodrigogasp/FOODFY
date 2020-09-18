@@ -26,7 +26,12 @@ const files = results.rows.map(file => ({
     src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
 }))
 
-return res.render("admin/chefs/index", {items, files})
+
+error = req.session.error
+
+req.session.error = ""
+
+return res.render("admin/chefs/index", {items, files, error})
 
 
 
@@ -119,7 +124,12 @@ const chefFile = results.rows.map(file => ({
     src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
 }))
 
-return res.render("admin/chefs/show", {items, chef, recipes, files, recipeFile, chefFile})
+
+error = req.session.error
+
+req.session.error = ""
+
+return res.render("admin/chefs/show", {items, chef, recipes, files, recipeFile, chefFile, error})
 
 
 },
@@ -141,6 +151,7 @@ async edit(req, res) {
         ...file,
         src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
     }))
+
     
 
 return res.render("admin/chefs/edit", {items, chef, files, chefId}) 

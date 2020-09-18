@@ -37,8 +37,12 @@
             
         </div>
 
-
+        {%if SessionId == item.user_id%}
+        <i class="material-icons">grade</i>
+        {%endif%}
     </div>
+
+
     {%endfor%}
 
 
@@ -47,6 +51,13 @@
 <div id="newRecipe">
 
 <a  href="/admin/recipes/create">Nova Receita</a>
+
+</div>
+
+<div class="legend">
+
+<i class="material-icons">grade</i>
+<p>= Suas receitas</p>
 
 </div>
 

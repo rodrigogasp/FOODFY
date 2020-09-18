@@ -23,5 +23,21 @@ module.exports = {
         })
 
     },
+    async passwordChange(req, res) {
+        return res.render('admin/profile/passwordChange.njk')
+    },
+    async putPasswordChange(req, res) {
+
+        const id = req.session.userId
+        const password = req.body.NewPassword
+
+        await User.updatePassword(id, password)
+
+        req.session.destroy()
+
+        return res.render('admin/session/login', {
+            success: 'Senha alterada com sucesso, faça login novamente com sua nova senha!'
+        })
+    }
     
 }

@@ -21,6 +21,9 @@ routes.post('/logout', SessionController.logout)
 // Rotas de perfil de um usuário logado
 routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
 routes.put('/profile', userValidator.put, ProfileController.put)// Editar o usuário logado
+routes.get('/password-change', ProfileController.passwordChange) 
+routes.put('/password-change', userValidator.updatePassword, ProfileController.putPasswordChange) 
+
 
 // Rotas que o administrador irá acessar para gerenciar usuários
 routes.get('/users', SessionValidator.isLogged, SessionValidator.isAdmin, UserController.list) //Mostrar a lista de usuários cadastrados
