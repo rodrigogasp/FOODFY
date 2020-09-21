@@ -80,6 +80,16 @@ module.exports = {
             console.error(err)
         }
     },
+    async findbyToken(token) {
+        try {
+            let results = await db.query('SELECT * FROM users WHERE reset_token=($1)', [token])
+
+            return results.rows[0]
+
+        } catch(err) {
+            console.error(err)
+        }
+    },
     async update(id, data) {
         try{
 
@@ -150,6 +160,31 @@ module.exports = {
 
         const values = [
             passwordHash,
+            id
+        ]
+
+        return db.query(query, values)
+
+
+        } catch(err) {
+            console.error(err)
+        }
+
+    },
+    async updateToken(id, token, tokenExpires) {
+        try{
+
+            const query = `
+        
+            UPDATE users SET
+            reset_token=($1),
+            reset_token_expires=($2)
+            WHERE id = $3
+        
+        `
+        const values = [
+            token,
+            tokenExpires,
             id
         ]
 

@@ -17,11 +17,19 @@ routes.get('/login', SessionController.loginPage)
 routes.post('/login', SessionValidator.login, SessionController.login)
 routes.post('/logout', SessionController.logout)
 
+//Forgot-password
+routes.get('/forgot-password', SessionController.forgot)
+routes.post('/forgot-password', SessionValidator.forgot, SessionController.emailRecovery)
+routes.get('/password-reset', SessionController.resetForm)
+routes.post('/password-reset', SessionValidator.reset, SessionController.resetPassword)
+
+
+
 
 // Rotas de perfil de um usuário logado
-routes.get('/profile', ProfileController.index) // Mostrar o formulário com dados do usuário logado
+routes.get('/profile', SessionValidator.isLogged, ProfileController.index) // Mostrar o formulário com dados do usuário logado
 routes.put('/profile', userValidator.put, ProfileController.put)// Editar o usuário logado
-routes.get('/password-change', ProfileController.passwordChange) 
+routes.get('/password-change', SessionValidator.isLogged, ProfileController.passwordChange) 
 routes.put('/password-change', userValidator.updatePassword, ProfileController.putPasswordChange) 
 
 
